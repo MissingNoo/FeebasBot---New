@@ -1,0 +1,186 @@
+﻿namespace FeebasBot
+{
+    partial class Form1
+    {
+        /// <summary>
+        /// Variável de designer necessária.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary>
+        /// Limpar os recursos que estão sendo usados.
+        /// </summary>
+        /// <param name="disposing">true se for necessário descartar os recursos gerenciados; caso contrário, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Código gerado pelo Windows Form Designer
+
+        /// <summary>
+        /// Método necessário para suporte ao Designer - não modifique 
+        /// o conteúdo deste método com o editor de código.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.bMinimize = new System.Windows.Forms.Button();
+            this.bClose = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.bStart = new System.Windows.Forms.Button();
+            this.bStop = new System.Windows.Forms.Button();
+            this.nIcon = new System.Windows.Forms.NotifyIcon(this.components);
+            this.bConfig = new System.Windows.Forms.Button();
+            this.bCave = new System.Windows.Forms.Button();
+            this.Run = new System.Windows.Forms.Timer(this.components);
+            this.panel1.SuspendLayout();
+            this.SuspendLayout();
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.SystemColors.ButtonShadow;
+            this.panel1.Controls.Add(this.bMinimize);
+            this.panel1.Controls.Add(this.bClose);
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(179, 39);
+            this.panel1.TabIndex = 0;
+            this.panel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseDown);
+            // 
+            // bMinimize
+            // 
+            this.bMinimize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bMinimize.Location = new System.Drawing.Point(120, 7);
+            this.bMinimize.Name = "bMinimize";
+            this.bMinimize.Size = new System.Drawing.Size(24, 24);
+            this.bMinimize.TabIndex = 2;
+            this.bMinimize.Text = "-";
+            this.bMinimize.UseVisualStyleBackColor = true;
+            this.bMinimize.Click += new System.EventHandler(this.bMinimize_Click);
+            // 
+            // bClose
+            // 
+            this.bClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bClose.Location = new System.Drawing.Point(150, 7);
+            this.bClose.Name = "bClose";
+            this.bClose.Size = new System.Drawing.Size(24, 24);
+            this.bClose.TabIndex = 1;
+            this.bClose.Text = "X";
+            this.bClose.UseVisualStyleBackColor = true;
+            this.bClose.Click += new System.EventHandler(this.bClose_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Pokemon Solid", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.Gold;
+            this.label1.Location = new System.Drawing.Point(3, -7);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(98, 46);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "FeebasBot";
+            this.label1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseDown);
+            // 
+            // bStart
+            // 
+            this.bStart.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bStart.Location = new System.Drawing.Point(92, 45);
+            this.bStart.Name = "bStart";
+            this.bStart.Size = new System.Drawing.Size(75, 23);
+            this.bStart.TabIndex = 1;
+            this.bStart.Text = "Iniciar";
+            this.bStart.UseVisualStyleBackColor = true;
+            this.bStart.Click += new System.EventHandler(this.bStart_Click);
+            // 
+            // bStop
+            // 
+            this.bStop.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bStop.Location = new System.Drawing.Point(11, 45);
+            this.bStop.Name = "bStop";
+            this.bStop.Size = new System.Drawing.Size(75, 23);
+            this.bStop.TabIndex = 2;
+            this.bStop.Text = "Parar";
+            this.bStop.UseVisualStyleBackColor = true;
+            this.bStop.Click += new System.EventHandler(this.bStop_Click);
+            // 
+            // nIcon
+            // 
+            this.nIcon.Icon = ((System.Drawing.Icon)(resources.GetObject("nIcon.Icon")));
+            this.nIcon.Text = "FeebasBot";
+            this.nIcon.Visible = true;
+            this.nIcon.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.nIcon_MouseDoubleClick);
+            // 
+            // bConfig
+            // 
+            this.bConfig.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bConfig.Location = new System.Drawing.Point(12, 74);
+            this.bConfig.Name = "bConfig";
+            this.bConfig.Size = new System.Drawing.Size(154, 23);
+            this.bConfig.TabIndex = 3;
+            this.bConfig.Text = "Configurações";
+            this.bConfig.UseVisualStyleBackColor = true;
+            this.bConfig.Click += new System.EventHandler(this.bConfig_Click);
+            // 
+            // bCave
+            // 
+            this.bCave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bCave.Location = new System.Drawing.Point(12, 103);
+            this.bCave.Name = "bCave";
+            this.bCave.Size = new System.Drawing.Size(154, 23);
+            this.bCave.TabIndex = 4;
+            this.bCave.Text = "Cavebot";
+            this.bCave.UseVisualStyleBackColor = true;
+            this.bCave.Click += new System.EventHandler(this.bCave_Click);
+            // 
+            // Run
+            // 
+            this.Run.Interval = 200;
+            this.Run.Tick += new System.EventHandler(this.Run_Tick);
+            // 
+            // Form1
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(178, 134);
+            this.Controls.Add(this.bCave);
+            this.Controls.Add(this.bConfig);
+            this.Controls.Add(this.bStop);
+            this.Controls.Add(this.bStart);
+            this.Controls.Add(this.panel1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Name = "Form1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "FeebasBot";
+            this.TopMost = true;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
+            this.Load += new System.EventHandler(this.Form1_Load);
+            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseDown);
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            this.ResumeLayout(false);
+
+        }
+
+        #endregion
+
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button bStart;
+        private System.Windows.Forms.Button bStop;
+        private System.Windows.Forms.Button bMinimize;
+        private System.Windows.Forms.Button bClose;
+        private System.Windows.Forms.NotifyIcon nIcon;
+        private System.Windows.Forms.Button bConfig;
+        private System.Windows.Forms.Button bCave;
+        private System.Windows.Forms.Timer Run;
+    }
+}
+
