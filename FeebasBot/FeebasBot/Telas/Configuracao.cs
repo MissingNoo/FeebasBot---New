@@ -1,11 +1,13 @@
 ﻿using FeebasBot.Classes;
 using FeebasBot.Classes.Bot;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net.NetworkInformation;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -21,7 +23,15 @@ namespace FeebasBot.Telas
 
         private void basescreen_Load(object sender, EventArgs e)
         {
+            gName.Text = Setting.GameName;
+            if (Setting.login == "") { panel7.Visible = true; }
+            if (Setting.PodeUsarLooting == 1) { lLooting.ForeColor = Color.Green; } else { lLooting.ForeColor = Color.Red; }
+            if (Setting.PodeUsarTrocaDePokemon== 1) { lTroca.ForeColor = Color.Green; } else { lTroca.ForeColor = Color.Red; }
+            if (Setting.PodeCapturar == 1) { lCatch.ForeColor = Color.Green; } else { lCatch.ForeColor = Color.Red; }
+            if (Setting.PodeUsarCaveBot == 1) { lCave.ForeColor = Color.Green; } else { lCave.ForeColor = Color.Red; }
+            label10.Text = Setting.login;
             if (Setting.Pescar == 1) cPescar.Checked = true;
+            if (Setting.PescarSemParar == 1) cNoStop.Checked = true;
             if (Setting.Atacar == 1) cAtacar.Checked = true;
             if (Setting.m1 == 1) cm1.Checked = true;
             if (Setting.m2 == 1) cm2.Checked = true;
@@ -101,7 +111,15 @@ namespace FeebasBot.Telas
 
         private void button9_MouseUp(object sender, MouseEventArgs e)
         {
-            Ataque.ConfigurarAtaque(MousePosition.X, MousePosition.Y) ;
+            int xn = MousePosition.X;
+            int yn = MousePosition.Y;
+            DialogResult dialogResult = MessageBox.Show("Deseja Configurar a posição da Batalha??", "Info", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                Ataque.ConfigurarAtaque(xn, yn);
+
+            }
+            
         }
         #region ManualConfig
         private void cManualConfig1_CheckedChanged(object sender, EventArgs e)
@@ -142,6 +160,7 @@ namespace FeebasBot.Telas
                 uint pixeldown = Convert.ToUInt32(getpixel.GrabPixel(Setting.TargetX, Setting.TargetY + 1));
                 Color colordown = Color.FromArgb((int)(pixeldown & 0x000000FF), (int)(pixeldown & 0x0000FF00) >> 8, (int)(pixeldown & 0x00FF0000) >> 16);
                 ManualDown.BackColor = colordown;
+                if (pixel.ToString() == "16777215") { cManualConfig1.ForeColor = Color.Green; } else { cManualConfig1.ForeColor = Color.Black; }
             }
             if (cManualConfig2.Checked)
             {
@@ -165,6 +184,7 @@ namespace FeebasBot.Telas
                 uint pixeldown = Convert.ToUInt32(getpixel.GrabPixel(Setting.TargetX2, Setting.TargetY2 + 1));
                 Color colordown = Color.FromArgb((int)(pixeldown & 0x000000FF), (int)(pixeldown & 0x0000FF00) >> 8, (int)(pixeldown & 0x00FF0000) >> 16);
                 ManualDown.BackColor = colordown;
+                if (pixel.ToString() == "16777215") { cManualConfig2.ForeColor = Color.Green; } else { cManualConfig2.ForeColor = Color.Black; }
             }
             if (!cManualConfig1.Checked && !cManualConfig2.Checked)
             {
@@ -175,7 +195,7 @@ namespace FeebasBot.Telas
                 ManualDown.BackColor = Color.Black;
                 ManualConfig.Stop();
             }
-
+            
         }
 
         private void ManualLeft_Click(object sender, EventArgs e)
@@ -364,6 +384,83 @@ namespace FeebasBot.Telas
         private void tabFunction_Click(object sender, EventArgs e)
         {
 
+        }
+        #region Login
+        String firstMacAddress = NetworkInterface
+            .GetAllNetworkInterfaces()
+            .Where(nic => nic.OperationalStatus == OperationalStatus.Up && nic.NetworkInterfaceType != NetworkInterfaceType.Loopback)
+            .Select(nic => nic.GetPhysicalAddress().ToString())
+            .FirstOrDefault();
+        MySqlConnection con;
+        MySqlCommand cmd;
+        MySqlDataReader dr;
+        private void bLogin_Click(object sender, EventArgs e)
+        {
+            Setting.login = txtLogin.Text;
+            string mac = "";
+            string my = "Server=sql10.freemysqlhosting.net;Database=sql10336993;user=sql10336993;Pwd=8JsRa57ub3;SslMode=none";
+            con = new MySqlConnection(my);
+            cmd = new MySqlCommand();
+            con.Open();
+            cmd.Connection = con;
+            cmd.CommandText = "SELECT * FROM users where User='" + Setting.login + "'";
+            dr = cmd.ExecuteReader();
+            if (dr.Read())
+            {
+                mac = Convert.ToString(dr.GetValue(2));
+                Setting.PodeUsarCaveBot = Convert.ToInt32(dr.GetValue(1));
+                Setting.PodeUsarLooting = Convert.ToInt32(dr.GetValue(3));
+                Setting.PodeUsarTrocaDePokemon = Convert.ToInt32(dr.GetValue(7));
+                Setting.PodeCapturar = Convert.ToInt32(dr.GetValue(6));
+            }
+            con.Close();
+            //MessageBox.Show(Convert.ToString(mac) + "\n" + Convert.ToString(firstMacAddress));
+            if (mac == firstMacAddress)
+            {
+                Setting.LoggedIn = true;
+                MessageBox.Show("Logado com sucesso!");
+            }
+            else if (mac == "0")
+            {
+                con.Open();
+                cmd.CommandText = "UPDATE users SET MAC='" + firstMacAddress + "' WHERE User='" + Setting.login + "'";
+                cmd.ExecuteNonQuery();
+                Setting.LoggedIn = true;
+                MessageBox.Show("Logado com sucesso!");
+            }
+            else if (mac != firstMacAddress && mac != "0" && mac != "")
+            {
+                MessageBox.Show("Computador diferente do cadastrado no sistema\nComunicar o Desenvolvedor!", "Informação", MessageBoxButtons.OK);
+            }
+            con.Close();
+            this.Close();
+        }
+        #endregion
+
+        private void tabLogin_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void gName_TextChanged(object sender, EventArgs e)
+        {
+            if (gName.Text != "")
+            {
+                IntPtr otpHandle = win32.FindWindow(null, Setting.GameName);
+                Setting.GameName = gName.Text;
+                win32.SetWindowText(otpHandle, Setting.GameName);
+            }
+        }
+
+        private void tabAtk_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cNoStop_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cNoStop.Checked == true) { Setting.PescarSemParar = 1; }
+            else { Setting.PescarSemParar = 0; }
         }
     }
 }

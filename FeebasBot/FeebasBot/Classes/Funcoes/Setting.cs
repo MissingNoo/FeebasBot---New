@@ -7,7 +7,9 @@ namespace FeebasBot.Classes
     public sealed class Setting
     {
         public static bool Running { get; set; }
+        public static bool PlayerOnScreen { get; set; }
         public static int offset { get; set; }
+        public static int tries { get; set; }
         public static string GameName { get; set; }
         #region Positions
         public static int RodX { get; set; }
@@ -66,6 +68,7 @@ namespace FeebasBot.Classes
         #endregion
         #region Funções
         public static int Pescar { get; set; }
+        public static int PescarSemParar { get; set; }
         public static int Atacar { get; set; }
         public static int TrocarDePokemon { get; set; }
         public static int Targetar { get; set; }
@@ -75,14 +78,14 @@ namespace FeebasBot.Classes
         #region Login        
         public static string login { get; set; }
         public static bool LoggedIn { get; set; }
-        public static int usecavebot { get; set; }
-        public static int Looting { get; set; }
-        public static int TrocaDePokemon { get; set; }
+        public static int PodeUsarCaveBot { get; set; }
+        public static int PodeUsarLooting { get; set; }
+        public static int PodeUsarTrocaDePokemon { get; set; }
         public static int caverun { get; set; }               
         public static int version { get; set; }
         public static int random { get; set; }
         public static string notes { get; set; }
-        public static int cancatch { get; set; }
+        public static int PodeCapturar { get; set; }
         #endregion
         #region Captura de Pokes
         public static int pokeballX { get; set; }

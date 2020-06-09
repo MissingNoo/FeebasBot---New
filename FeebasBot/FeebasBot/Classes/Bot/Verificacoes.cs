@@ -20,7 +20,7 @@ namespace FeebasBot.Classes.Funcoes
         public static bool PokeVivo()
         {
             string color = BattleColor();
-            if(color == "0")
+            if (color == "0")
             {
                 return true;
             }
@@ -43,6 +43,22 @@ namespace FeebasBot.Classes.Funcoes
                 found = true;
             }
             return found;
+        }
+        public static void Targetar()
+        {
+            bool target = Targetando();
+            if (target == false)
+            {
+                win32.LeftClick(Setting.BattleX, Setting.BattleY);
+                if (Setting.tries < 7)
+                {
+                    if (Setting.Pescar == 1)
+                    {
+                        Setting.tries++;
+                    }
+                }
+                else { Setting.PlayerOnScreen = true; }
+            }
         }
     }
 }

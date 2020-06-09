@@ -69,55 +69,76 @@ namespace FeebasBot.Classes.Bot
         }
         public static void Atacar()
         {
-            bool vivo = Verificacoes.PokeVivo();
-            while (vivo)
+            while (true)
             {
+                if (Setting.PlayerOnScreen == true) { Thread.CurrentThread.Abort(); }
                 bool targeting = Verificacoes.Targetando();
-                if (!targeting)
+                if (targeting == false)
                 {
                     win32.LeftClick(Setting.BattleX, Setting.BattleY);
+                    if (Setting.tries < 7)
+                    {
+                        if (Setting.Pescar == 1)
+                        {
+                            Setting.tries++;
+                        }                        
+                    }
+                    else { Setting.PlayerOnScreen = true; }
+                    
                 }
                 Thread.Sleep(300);
-                if (targeting)
+                if (targeting == true)
                 {
+                    Setting.tries = 0;
                     Moves();
                 }
-                vivo = Verificacoes.PokeVivo();
+                if (Verificacoes.PokeVivo() == false) break;
             }
         }
         static void Moves()
         {
             while (true)
             {
+                if (Setting.PlayerOnScreen == true) { Thread.CurrentThread.Abort(); }
                 Setting.attacktime = 350;
+                Verificacoes.Targetar();
                 if (Verificacoes.PokeVivo() == false) { break; }
                 if (Setting.m1 == 1) { win32.SendKeys(Keys.F1); }
                 if (Verificacoes.PokeVivo() == false) { break; }
                 Thread.Sleep(Setting.attacktime);
+                Verificacoes.Targetar();
                 if (Setting.m2 == 1) { win32.SendKeys(Keys.F2); }
                 if (Verificacoes.PokeVivo() == false) { break; }
                 Thread.Sleep(Setting.attacktime);
+                Verificacoes.Targetar();
                 if (Setting.m3 == 1) { win32.SendKeys(Keys.F3); }
                 if (Verificacoes.PokeVivo() == false) { break; }
                 Thread.Sleep(Setting.attacktime);
+                Verificacoes.Targetar();
                 if (Setting.m4 == 1) { win32.SendKeys(Keys.F4); }
                 if (Verificacoes.PokeVivo() == false) { break; }
                 Thread.Sleep(Setting.attacktime);
+                Verificacoes.Targetar();
                 if (Setting.m5 == 1) { win32.SendKeys(Keys.F5); }
                 if (Verificacoes.PokeVivo() == false) { break; }
                 Thread.Sleep(Setting.attacktime);
+                Verificacoes.Targetar();
                 if (Setting.m6 == 1) { win32.SendKeys(Keys.F6); }
                 if (Verificacoes.PokeVivo() == false) { break; }
                 Thread.Sleep(Setting.attacktime);
+                Verificacoes.Targetar();
                 if (Setting.m7 == 1) { win32.SendKeys(Keys.F7); }
                 if (Verificacoes.PokeVivo() == false) { break; }
                 Thread.Sleep(Setting.attacktime);
+                Verificacoes.Targetar();
                 if (Setting.m8 == 1) { win32.SendKeys(Keys.F8); }
                 if (Verificacoes.PokeVivo() == false) { break; }
                 Thread.Sleep(Setting.attacktime);
+                Verificacoes.Targetar();
                 if (Setting.m9 == 1) { win32.SendKeys(Keys.F9); }
                 if (Verificacoes.PokeVivo() == false) { break; }
                 Thread.Sleep(Setting.attacktime);
+                Verificacoes.Targetar();
                 if (Setting.m10 == 1) { win32.SendKeys(Keys.F10); }
                 if (Verificacoes.PokeVivo() == false) { break; }
                 Thread.Sleep(Setting.attacktime);

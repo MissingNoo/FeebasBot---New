@@ -130,6 +130,8 @@ namespace FeebasBot
             //SendMessage(handle, WM_LBUTTONUP, 0x00000000, CreateLParam(x, y));
         }
         [DllImport("user32.dll")]
+        public static extern bool SetWindowText(IntPtr hWnd, string text);
+        [DllImport("user32.dll")]
         static extern bool PostMessage(IntPtr hWnd, uint Msg, IntPtr wParam, IntPtr lParam);
         const uint WM_KEYDOWN = 0x0100;
         const uint WM_KEYUP = 0x0101;
