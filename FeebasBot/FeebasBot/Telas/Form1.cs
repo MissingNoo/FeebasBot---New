@@ -41,6 +41,8 @@ namespace FeebasBot
             IntPtr bothandle = win32.FindWindow(null, Setting.GameName + "Bot");
             if (bothandle != IntPtr.Zero) { MessageBox.Show("Renomeie o Client Anteior antes de abrir mais um bot!"); Application.Exit(); }
             this.Text = Setting.GameName + "Bot";
+            IntPtr otphandle = win32.FindWindow(null, Setting.GameName);
+            if (otphandle == IntPtr.Zero) { MessageBox.Show("otPokemon não está aberto!"); Application.Exit(); }
         }
         private void Form1_MouseDown(object sender, MouseEventArgs e)
         {
@@ -146,6 +148,8 @@ namespace FeebasBot
         #endregion
         private void bStart_Click(object sender, EventArgs e)
         {
+            Setting.Kill = false;
+            Pescando = false;
             Pescou = false;
             bStart.BackColor = Color.Green;
             Setting.PlayerOnScreen = false;
@@ -159,6 +163,7 @@ namespace FeebasBot
         }
         private void bStop_Click(object sender, EventArgs e)
         {
+            Setting.Kill = true;
             Run.Stop();
         }
         void start()
@@ -199,6 +204,12 @@ namespace FeebasBot
             }
             if (Setting.PlayerOnScreen == true) { Run.Stop(); bStart.BackColor = Color.Red; FormsV.playSound("alarm.wav"); }
             //Thread.Sleep(200);
+        }
+
+        private void Open_Tick(object sender, EventArgs e)
+        {
+            this.Text = Setting.GameName + "Bot";
+            nIcon.Text = "Clique duas vezes para abrir a janela do bot!\nChar: " + Setting.GameName;
         }
     }
 }

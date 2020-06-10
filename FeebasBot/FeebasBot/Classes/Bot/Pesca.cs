@@ -13,9 +13,10 @@ namespace FeebasBot.Classes.Bot
     {
         public static bool Pescar()
         {
+            int time = 0;
             Thread.Sleep(500);
             bool pescou = false;
-            if (Setting.PlayerOnScreen == true) { Thread.CurrentThread.Abort(); }
+            if (Setting.PlayerOnScreen == true || Setting.Kill) { Thread.CurrentThread.Abort(); }
             win32.LeftClick(0, 0);
             win32.LeftClick(Setting.RodX, Setting.RodY);//clicar na vara
             win32.LeftClick(Setting.WaterX, Setting.WaterY);//clicar na agua
@@ -23,8 +24,17 @@ namespace FeebasBot.Classes.Bot
             string colornow = Verificacoes.FishColor();
             while (colornow == startcolor)
             {
-                colornow = Verificacoes.FishColor();
-                Thread.Sleep(300);
+                Thread.Sleep(500);
+                if (time < 20)
+                {
+                    //colornow = Convert.ToString(getpixel.GetPixel(getpixel.GetWindowDC(getpixel.GetDesktopWindow()), Setting.FishX, Setting.FishY));
+                    colornow = Verificacoes.FishColor();
+                    time++;
+                }
+                else
+                {
+                    colornow = "0";
+                }
             }
             win32.LeftClick(Setting.FishX, Setting.FishY);
             win32.MoveMouse(0, 0);

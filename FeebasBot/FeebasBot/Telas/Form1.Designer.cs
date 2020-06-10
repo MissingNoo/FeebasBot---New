@@ -40,6 +40,7 @@
             this.bConfig = new System.Windows.Forms.Button();
             this.bCave = new System.Windows.Forms.Button();
             this.Run = new System.Windows.Forms.Timer(this.components);
+            this.Open = new System.Windows.Forms.Timer(this.components);
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -49,18 +50,20 @@
             this.panel1.Controls.Add(this.bMinimize);
             this.panel1.Controls.Add(this.bClose);
             this.panel1.Controls.Add(this.label1);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(179, 39);
+            this.panel1.Size = new System.Drawing.Size(189, 39);
             this.panel1.TabIndex = 0;
             this.panel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseDown);
             // 
             // bMinimize
             // 
+            this.bMinimize.Dock = System.Windows.Forms.DockStyle.Right;
             this.bMinimize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bMinimize.Location = new System.Drawing.Point(120, 7);
+            this.bMinimize.Location = new System.Drawing.Point(141, 0);
             this.bMinimize.Name = "bMinimize";
-            this.bMinimize.Size = new System.Drawing.Size(24, 24);
+            this.bMinimize.Size = new System.Drawing.Size(24, 39);
             this.bMinimize.TabIndex = 2;
             this.bMinimize.Text = "-";
             this.bMinimize.UseVisualStyleBackColor = true;
@@ -68,10 +71,11 @@
             // 
             // bClose
             // 
+            this.bClose.Dock = System.Windows.Forms.DockStyle.Right;
             this.bClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bClose.Location = new System.Drawing.Point(150, 7);
+            this.bClose.Location = new System.Drawing.Point(165, 0);
             this.bClose.Name = "bClose";
-            this.bClose.Size = new System.Drawing.Size(24, 24);
+            this.bClose.Size = new System.Drawing.Size(24, 39);
             this.bClose.TabIndex = 1;
             this.bClose.Text = "X";
             this.bClose.UseVisualStyleBackColor = true;
@@ -84,9 +88,9 @@
             this.label1.ForeColor = System.Drawing.Color.Gold;
             this.label1.Location = new System.Drawing.Point(3, -7);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(98, 46);
+            this.label1.Size = new System.Drawing.Size(131, 46);
             this.label1.TabIndex = 0;
-            this.label1.Text = "FeebasBot";
+            this.label1.Text = "FeebasBotNew";
             this.label1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseDown);
             // 
             // bStart
@@ -145,11 +149,17 @@
             this.Run.Interval = 200;
             this.Run.Tick += new System.EventHandler(this.Run_Tick);
             // 
+            // Open
+            // 
+            this.Open.Enabled = true;
+            this.Open.Interval = 1000;
+            this.Open.Tick += new System.EventHandler(this.Open_Tick);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(178, 134);
+            this.ClientSize = new System.Drawing.Size(189, 134);
             this.Controls.Add(this.bCave);
             this.Controls.Add(this.bConfig);
             this.Controls.Add(this.bStop);
@@ -181,6 +191,7 @@
         private System.Windows.Forms.Button bConfig;
         private System.Windows.Forms.Button bCave;
         private System.Windows.Forms.Timer Run;
+        private System.Windows.Forms.Timer Open;
     }
 }
 

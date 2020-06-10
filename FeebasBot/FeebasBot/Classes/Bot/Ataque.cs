@@ -1,4 +1,5 @@
 ﻿using FeebasBot.Classes.Funcoes;
+using FeebasBot.Properties;
 using Org.BouncyCastle.Asn1.X509;
 using System;
 using System.Collections.Generic;
@@ -71,7 +72,7 @@ namespace FeebasBot.Classes.Bot
         {
             while (true)
             {
-                if (Setting.PlayerOnScreen == true) { Thread.CurrentThread.Abort(); }
+                if (Setting.PlayerOnScreen == true || Setting.Kill) { Thread.CurrentThread.Abort(); }
                 bool targeting = Verificacoes.Targetando();
                 if (targeting == false)
                 {
@@ -99,7 +100,7 @@ namespace FeebasBot.Classes.Bot
         {
             while (true)
             {
-                if (Setting.PlayerOnScreen == true) { Thread.CurrentThread.Abort(); }
+                if (Setting.PlayerOnScreen == true || Setting.Kill) { Thread.CurrentThread.Abort(); }
                 Setting.attacktime = 350;
                 Verificacoes.Targetar();
                 if (Verificacoes.PokeVivo() == false) { break; }

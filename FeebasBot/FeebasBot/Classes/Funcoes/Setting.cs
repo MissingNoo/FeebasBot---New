@@ -6,6 +6,7 @@ namespace FeebasBot.Classes
 {
     public sealed class Setting
     {
+        public static bool Kill { get; set; }
         public static bool Running { get; set; }
         public static bool PlayerOnScreen { get; set; }
         public static int offset { get; set; }
