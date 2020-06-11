@@ -84,21 +84,22 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Pokemon Solid", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.Gold;
-            this.label1.Location = new System.Drawing.Point(3, -7);
+            this.label1.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label1.Location = new System.Drawing.Point(3, 10);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(131, 46);
+            this.label1.Size = new System.Drawing.Size(117, 18);
             this.label1.TabIndex = 0;
             this.label1.Text = "FeebasBotNew";
             this.label1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseDown);
             // 
             // bStart
             // 
+            this.bStart.Dock = System.Windows.Forms.DockStyle.Top;
             this.bStart.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bStart.Location = new System.Drawing.Point(92, 45);
+            this.bStart.Location = new System.Drawing.Point(0, 39);
             this.bStart.Name = "bStart";
-            this.bStart.Size = new System.Drawing.Size(75, 23);
+            this.bStart.Size = new System.Drawing.Size(189, 23);
             this.bStart.TabIndex = 1;
             this.bStart.Text = "Iniciar";
             this.bStart.UseVisualStyleBackColor = true;
@@ -106,10 +107,11 @@
             // 
             // bStop
             // 
+            this.bStop.Dock = System.Windows.Forms.DockStyle.Top;
             this.bStop.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bStop.Location = new System.Drawing.Point(11, 45);
+            this.bStop.Location = new System.Drawing.Point(0, 62);
             this.bStop.Name = "bStop";
-            this.bStop.Size = new System.Drawing.Size(75, 23);
+            this.bStop.Size = new System.Drawing.Size(189, 23);
             this.bStop.TabIndex = 2;
             this.bStop.Text = "Parar";
             this.bStop.UseVisualStyleBackColor = true;
@@ -124,10 +126,11 @@
             // 
             // bConfig
             // 
+            this.bConfig.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.bConfig.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bConfig.Location = new System.Drawing.Point(12, 74);
+            this.bConfig.Location = new System.Drawing.Point(0, 108);
             this.bConfig.Name = "bConfig";
-            this.bConfig.Size = new System.Drawing.Size(154, 23);
+            this.bConfig.Size = new System.Drawing.Size(189, 23);
             this.bConfig.TabIndex = 3;
             this.bConfig.Text = "Configurações";
             this.bConfig.UseVisualStyleBackColor = true;
@@ -135,10 +138,11 @@
             // 
             // bCave
             // 
+            this.bCave.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.bCave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bCave.Location = new System.Drawing.Point(12, 103);
+            this.bCave.Location = new System.Drawing.Point(0, 85);
             this.bCave.Name = "bCave";
-            this.bCave.Size = new System.Drawing.Size(154, 23);
+            this.bCave.Size = new System.Drawing.Size(189, 23);
             this.bCave.TabIndex = 4;
             this.bCave.Text = "Cavebot";
             this.bCave.UseVisualStyleBackColor = true;
@@ -159,7 +163,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(189, 134);
+            this.ClientSize = new System.Drawing.Size(189, 131);
             this.Controls.Add(this.bCave);
             this.Controls.Add(this.bConfig);
             this.Controls.Add(this.bStop);

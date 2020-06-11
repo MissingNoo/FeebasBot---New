@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace FeebasBot.Classes.Funcoes
 {
@@ -32,25 +33,25 @@ namespace FeebasBot.Classes.Funcoes
         public static bool Targetando()
         {
             bool found = false;
-            string px = getpixel.GrabPixel(Setting.TargetX, Setting.TargetY);
-            string px2 = getpixel.GrabPixel(Setting.TargetX2, Setting.TargetY2);
-            if (px == "8947967" || px == "255")
+            for (int a = Setting.TargetY2; a <= Setting.TargetY; a++)
             {
-                found = true;
-            }
-            if (px2 == "8947967" || px2 == "255")
-            {
-                found = true;
+                string px = getpixel.GrabPixel(Setting.TargetX, a);
+                if (px == "8947967" || px == "255")
+                {
+                    found = true;
+                    break;
+                }
             }
             return found;
         }
         public static void Targetar()
         {
             bool target = Targetando();
-            if (target == false)
+            bool vivo = PokeVivo();
+            if (target == false && vivo == true && Setting.clicklock == false)
             {
                 win32.LeftClick(Setting.BattleX, Setting.BattleY);
-                if (Setting.tries < 7)
+                if (Setting.tries < Setting.triestotal)
                 {
                     if (Setting.Pescar == 1)
                     {

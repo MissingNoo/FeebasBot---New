@@ -93,13 +93,30 @@ namespace FeebasBot
         }
         public static void LeftClick(int x, int y)
         {
+            if (Setting.click == false && Setting.clicklock == false)
+            {
+                Setting.click = true;
+                IntPtr hWindow = win32.FindWindow(null, Setting.GameName);
+                int border_thickness = GetSystemMetrics(SystemMetric.SM_CYCAPTION);
+                PostMessage(hWindow, WM_MOUSEMOVE, 0, MakeLParam(x, y - border_thickness));
+                PostMessage(hWindow, WM_LBUTTONDOWN, MK_LBUTTON, MakeLParam(x, y - border_thickness));
+                PostMessage(hWindow, WM_MOUSEMOVE, MK_LBUTTON, MakeLParam(x, y - border_thickness));
+                PostMessage(hWindow, WM_LBUTTONUP, 0, MakeLParam(x, y - border_thickness));
+                //Cursor.Position = new System.Drawing.Point(x, y - border_thickness);
+                Setting.click = false;
+            }
+        }
+        public static void LeftClickLocked(int x, int y)
+        {
+            Setting.click = true;
             IntPtr hWindow = win32.FindWindow(null, Setting.GameName);
             int border_thickness = GetSystemMetrics(SystemMetric.SM_CYCAPTION);
             PostMessage(hWindow, WM_MOUSEMOVE, 0, MakeLParam(x, y - border_thickness));
-            PostMessage(hWindow, WM_LBUTTONDOWN, MK_LBUTTON, MakeLParam(x, y-border_thickness));
-            PostMessage(hWindow, WM_MOUSEMOVE, MK_LBUTTON, MakeLParam(x, y-border_thickness));
-            PostMessage(hWindow, WM_LBUTTONUP, 0, MakeLParam(x, y-border_thickness));
+            PostMessage(hWindow, WM_LBUTTONDOWN, MK_LBUTTON, MakeLParam(x, y - border_thickness));
+            PostMessage(hWindow, WM_MOUSEMOVE, MK_LBUTTON, MakeLParam(x, y - border_thickness));
+            PostMessage(hWindow, WM_LBUTTONUP, 0, MakeLParam(x, y - border_thickness));
             //Cursor.Position = new System.Drawing.Point(x, y - border_thickness);
+            Setting.click = false;
         }
         public static void MoveMouse(int x, int y)
         {

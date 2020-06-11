@@ -6,11 +6,14 @@ namespace FeebasBot.Classes
 {
     public sealed class Setting
     {
+        public static bool click { get; set; }
+        public static bool clicklock { get; set; }
         public static bool Kill { get; set; }
         public static bool Running { get; set; }
         public static bool PlayerOnScreen { get; set; }
         public static int offset { get; set; }
         public static int tries { get; set; }
+        public static int triestotal { get; set; }
         public static string GameName { get; set; }
         #region Positions
         public static int RodX { get; set; }
@@ -160,6 +163,8 @@ namespace FeebasBot.Classes
                 "useBall1 : " + Setting.useBall1,
                 "useBall2 : " + Setting.useBall2,
                 "useBall3 : " + Setting.useBall3,
+                "triestotal : " + Setting.triestotal,
+                "attacktime : " + Setting.attacktime,
             };
 
             // Write the string array to a new file named "WriteLines.txt".

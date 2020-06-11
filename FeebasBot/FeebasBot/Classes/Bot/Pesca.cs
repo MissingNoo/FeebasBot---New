@@ -17,13 +17,19 @@ namespace FeebasBot.Classes.Bot
             Thread.Sleep(500);
             bool pescou = false;
             if (Setting.PlayerOnScreen == true || Setting.Kill) { Thread.CurrentThread.Abort(); }
-            win32.LeftClick(0, 0);
-            win32.LeftClick(Setting.RodX, Setting.RodY);//clicar na vara
-            win32.LeftClick(Setting.WaterX, Setting.WaterY);//clicar na agua
+            Setting.clicklock = true;
+            win32.LeftClickLocked(0, 0);
+            win32.LeftClickLocked(Setting.RodX, Setting.RodY);//clicar na vara
+            Thread.Sleep(200);
+            win32.LeftClickLocked(Setting.WaterX, Setting.WaterY);//clicar na agua
+            Thread.Sleep(200);
+            win32.LeftClickLocked(0, 0);
+            Setting.clicklock = false;
             string startcolor = Verificacoes.FishColor();
             string colornow = Verificacoes.FishColor();
             while (colornow == startcolor)
             {
+                if (Setting.PlayerOnScreen == true || Setting.Kill) { Thread.CurrentThread.Abort(); }
                 Thread.Sleep(500);
                 if (time < 20)
                 {
@@ -36,6 +42,7 @@ namespace FeebasBot.Classes.Bot
                     colornow = "0";
                 }
             }
+            if (Setting.PlayerOnScreen == true || Setting.Kill) { Thread.CurrentThread.Abort(); }
             win32.LeftClick(Setting.FishX, Setting.FishY);
             win32.MoveMouse(0, 0);
             pescou = true;

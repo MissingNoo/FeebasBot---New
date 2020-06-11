@@ -36,6 +36,8 @@ namespace FeebasBot
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            Setting.click = false;
+            Setting.clicklock = false;
             if (Setting.login != "") Login();
             Setting.GameName = "otPokemon";
             IntPtr bothandle = win32.FindWindow(null, Setting.GameName + "Bot");
@@ -87,7 +89,11 @@ namespace FeebasBot
             }
             else
             {
-                cavebot.Show();
+                if (Setting.PodeUsarCaveBot == 1)
+                {
+                    cavebot.Show();
+                }
+                else { MessageBox.Show("Função Bloqueada!"); }
             }
         }
         #region Login
@@ -165,9 +171,12 @@ namespace FeebasBot
         {
             Setting.Kill = true;
             Run.Stop();
+            bStart.BackColor = Color.Red;
         }
         void start()
         {
+            if (Setting.PescarSemParar == 1) { Setting.triestotal = 20; }
+            else { Setting.triestotal = 7; }
             if (Setting.PlayerOnScreen == false)
             {
                 if (Setting.Pescar == 1 && Setting.PescarSemParar == 0)
@@ -209,6 +218,7 @@ namespace FeebasBot
         private void Open_Tick(object sender, EventArgs e)
         {
             this.Text = Setting.GameName + "Bot";
+            if (Setting.GameName != "otPokemon") { label1.Text = Setting.GameName; }
             nIcon.Text = "Clique duas vezes para abrir a janela do bot!\nChar: " + Setting.GameName;
         }
     }
