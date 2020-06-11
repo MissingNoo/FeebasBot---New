@@ -128,12 +128,28 @@ namespace FeebasBot
         }
         public static void RightClick(int x, int y)
         {
+            if (Setting.click == false && Setting.clicklock == false)
+            {
+                Setting.click = true;
+                IntPtr hWindow = win32.FindWindow(null, Setting.GameName);
+                int border_thickness = GetSystemMetrics(SystemMetric.SM_CYCAPTION);
+                PostMessage(hWindow, WM_MOUSEMOVE, 0, MakeLParam(x, y - border_thickness));
+                PostMessage(hWindow, WM_RBUTTONDOWN, MK_RBUTTON, MakeLParam(x, y - border_thickness));
+                PostMessage(hWindow, WM_MOUSEMOVE, MK_RBUTTON, MakeLParam(x, y - border_thickness));
+                PostMessage(hWindow, WM_RBUTTONUP, 0, MakeLParam(x, y - border_thickness));
+                Setting.click = false;
+            }
+        }
+        public static void RightClickLocked(int x, int y)
+        {
+            Setting.click = true;
             IntPtr hWindow = win32.FindWindow(null, Setting.GameName);
             int border_thickness = GetSystemMetrics(SystemMetric.SM_CYCAPTION);
             PostMessage(hWindow, WM_MOUSEMOVE, 0, MakeLParam(x, y - border_thickness));
             PostMessage(hWindow, WM_RBUTTONDOWN, MK_RBUTTON, MakeLParam(x, y - border_thickness));
             PostMessage(hWindow, WM_MOUSEMOVE, MK_RBUTTON, MakeLParam(x, y - border_thickness));
             PostMessage(hWindow, WM_RBUTTONUP, 0, MakeLParam(x, y - border_thickness));
+            Setting.click = false;
         }
         public static void RightClickOld(IntPtr handle, int x, int y)
         {

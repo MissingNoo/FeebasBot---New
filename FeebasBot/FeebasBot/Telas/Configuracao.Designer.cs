@@ -48,6 +48,11 @@
             this.btnAgua = new System.Windows.Forms.Button();
             this.btnVara = new System.Windows.Forms.Button();
             this.tabAtk = new System.Windows.Forms.TabPage();
+            this.Battlemanual = new System.Windows.Forms.CheckBox();
+            this.panel8 = new System.Windows.Forms.Panel();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.panel5 = new System.Windows.Forms.Panel();
             this.label7 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -86,25 +91,50 @@
             this.label8 = new System.Windows.Forms.Label();
             this.ManualConfig = new System.Windows.Forms.Timer(this.components);
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.panel8 = new System.Windows.Forms.Panel();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.Battlemanual = new System.Windows.Forms.CheckBox();
+            this.cLoot = new System.Windows.Forms.CheckBox();
+            this.tabLooting = new System.Windows.Forms.TabPage();
+            this.panel9 = new System.Windows.Forms.Panel();
+            this.bPlayer = new System.Windows.Forms.Button();
+            this.label14 = new System.Windows.Forms.Label();
+            this.bSquare = new System.Windows.Forms.Button();
+            this.label15 = new System.Windows.Forms.Label();
+            this.panel10 = new System.Windows.Forms.Panel();
+            this.cShowLoot = new System.Windows.Forms.CheckBox();
+            this.DrawPositions = new System.Windows.Forms.Timer(this.components);
+            this.button1 = new System.Windows.Forms.Button();
+            this.p1 = new System.Windows.Forms.CheckBox();
+            this.p2 = new System.Windows.Forms.CheckBox();
+            this.p3 = new System.Windows.Forms.CheckBox();
+            this.p4 = new System.Windows.Forms.CheckBox();
+            this.p5 = new System.Windows.Forms.CheckBox();
+            this.p6 = new System.Windows.Forms.CheckBox();
+            this.p7 = new System.Windows.Forms.CheckBox();
+            this.p8 = new System.Windows.Forms.CheckBox();
+            this.label16 = new System.Windows.Forms.Label();
+            this.bSave = new System.Windows.Forms.Button();
+            this.bSlot = new System.Windows.Forms.Button();
+            this.label17 = new System.Windows.Forms.Label();
+            this.bCloseLoot = new System.Windows.Forms.Button();
+            this.label18 = new System.Windows.Forms.Label();
+            this.bOrder = new System.Windows.Forms.Button();
+            this.label19 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.tabCfg.SuspendLayout();
             this.tabFunction.SuspendLayout();
             this.panel6.SuspendLayout();
             this.tabPesca.SuspendLayout();
             this.tabAtk.SuspendLayout();
+            this.panel8.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.panel5.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
             this.tabLogin.SuspendLayout();
             this.panel7.SuspendLayout();
-            this.panel8.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            this.tabLooting.SuspendLayout();
+            this.panel9.SuspendLayout();
+            this.panel10.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -148,6 +178,7 @@
             this.tabCfg.Controls.Add(this.tabPesca);
             this.tabCfg.Controls.Add(this.tabAtk);
             this.tabCfg.Controls.Add(this.tabLogin);
+            this.tabCfg.Controls.Add(this.tabLooting);
             this.tabCfg.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabCfg.Location = new System.Drawing.Point(0, 39);
             this.tabCfg.Name = "tabCfg";
@@ -189,12 +220,13 @@
             // panel6
             // 
             this.panel6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel6.Controls.Add(this.cLoot);
             this.panel6.Controls.Add(this.cNoStop);
             this.panel6.Controls.Add(this.cAtacar);
             this.panel6.Controls.Add(this.cPescar);
             this.panel6.Location = new System.Drawing.Point(7, 7);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(82, 73);
+            this.panel6.Size = new System.Drawing.Size(82, 140);
             this.panel6.TabIndex = 0;
             // 
             // cNoStop
@@ -330,6 +362,68 @@
             this.tabAtk.Text = "Ataque";
             this.tabAtk.UseVisualStyleBackColor = true;
             this.tabAtk.Click += new System.EventHandler(this.tabAtk_Click);
+            // 
+            // Battlemanual
+            // 
+            this.Battlemanual.AutoSize = true;
+            this.Battlemanual.Location = new System.Drawing.Point(79, 63);
+            this.Battlemanual.Name = "Battlemanual";
+            this.Battlemanual.Size = new System.Drawing.Size(180, 17);
+            this.Battlemanual.TabIndex = 19;
+            this.Battlemanual.Text = "Configuração manual da Batalha";
+            this.Battlemanual.UseVisualStyleBackColor = true;
+            this.Battlemanual.CheckedChanged += new System.EventHandler(this.Battlemanual_CheckedChanged);
+            // 
+            // panel8
+            // 
+            this.panel8.Controls.Add(this.label13);
+            this.panel8.Controls.Add(this.label12);
+            this.panel8.Controls.Add(this.numericUpDown1);
+            this.panel8.Location = new System.Drawing.Point(236, 6);
+            this.panel8.Name = "panel8";
+            this.panel8.Size = new System.Drawing.Size(113, 48);
+            this.panel8.TabIndex = 18;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(44, 28);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(68, 13);
+            this.label13.TabIndex = 2;
+            this.label13.Text = "Milisegundos";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(0, 4);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(114, 13);
+            this.label12.TabIndex = 1;
+            this.label12.Text = "Tempo entre cada skill";
+            // 
+            // numericUpDown1
+            // 
+            this.numericUpDown1.Increment = new decimal(new int[] {
+            50,
+            0,
+            0,
+            0});
+            this.numericUpDown1.Location = new System.Drawing.Point(3, 24);
+            this.numericUpDown1.Maximum = new decimal(new int[] {
+            2000,
+            0,
+            0,
+            0});
+            this.numericUpDown1.Name = "numericUpDown1";
+            this.numericUpDown1.Size = new System.Drawing.Size(44, 20);
+            this.numericUpDown1.TabIndex = 0;
+            this.numericUpDown1.Value = new decimal(new int[] {
+            250,
+            0,
+            0,
+            0});
+            this.numericUpDown1.ValueChanged += new System.EventHandler(this.numericUpDown1_ValueChanged);
             // 
             // panel5
             // 
@@ -746,67 +840,293 @@
             this.timer1.Interval = 500;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // panel8
+            // cLoot
             // 
-            this.panel8.Controls.Add(this.label13);
-            this.panel8.Controls.Add(this.label12);
-            this.panel8.Controls.Add(this.numericUpDown1);
-            this.panel8.Location = new System.Drawing.Point(236, 6);
-            this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(113, 48);
-            this.panel8.TabIndex = 18;
+            this.cLoot.AutoSize = true;
+            this.cLoot.Location = new System.Drawing.Point(3, 74);
+            this.cLoot.Name = "cLoot";
+            this.cLoot.Size = new System.Drawing.Size(61, 17);
+            this.cLoot.TabIndex = 3;
+            this.cLoot.Text = "Looting";
+            this.cLoot.UseVisualStyleBackColor = true;
+            this.cLoot.CheckedChanged += new System.EventHandler(this.cLoot_CheckedChanged);
             // 
-            // numericUpDown1
+            // tabLooting
             // 
-            this.numericUpDown1.Increment = new decimal(new int[] {
-            50,
-            0,
-            0,
-            0});
-            this.numericUpDown1.Location = new System.Drawing.Point(3, 24);
-            this.numericUpDown1.Maximum = new decimal(new int[] {
-            2000,
-            0,
-            0,
-            0});
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(44, 20);
-            this.numericUpDown1.TabIndex = 0;
-            this.numericUpDown1.Value = new decimal(new int[] {
-            250,
-            0,
-            0,
-            0});
-            this.numericUpDown1.ValueChanged += new System.EventHandler(this.numericUpDown1_ValueChanged);
+            this.tabLooting.Controls.Add(this.button1);
+            this.tabLooting.Controls.Add(this.panel10);
+            this.tabLooting.Controls.Add(this.panel9);
+            this.tabLooting.Location = new System.Drawing.Point(4, 22);
+            this.tabLooting.Name = "tabLooting";
+            this.tabLooting.Padding = new System.Windows.Forms.Padding(3);
+            this.tabLooting.Size = new System.Drawing.Size(355, 236);
+            this.tabLooting.TabIndex = 4;
+            this.tabLooting.Text = "Looting";
+            this.tabLooting.UseVisualStyleBackColor = true;
             // 
-            // label12
+            // panel9
             // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(0, 4);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(114, 13);
-            this.label12.TabIndex = 1;
-            this.label12.Text = "Tempo entre cada skill";
+            this.panel9.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel9.Controls.Add(this.bCloseLoot);
+            this.panel9.Controls.Add(this.bOrder);
+            this.panel9.Controls.Add(this.label19);
+            this.panel9.Controls.Add(this.label18);
+            this.panel9.Controls.Add(this.bSquare);
+            this.panel9.Controls.Add(this.label15);
+            this.panel9.Controls.Add(this.bSlot);
+            this.panel9.Controls.Add(this.label17);
+            this.panel9.Controls.Add(this.bPlayer);
+            this.panel9.Controls.Add(this.label14);
+            this.panel9.Location = new System.Drawing.Point(8, 6);
+            this.panel9.Name = "panel9";
+            this.panel9.Size = new System.Drawing.Size(160, 230);
+            this.panel9.TabIndex = 16;
             // 
-            // label13
+            // bPlayer
             // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(44, 28);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(68, 13);
-            this.label13.TabIndex = 2;
-            this.label13.Text = "Milisegundos";
+            this.bPlayer.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.bPlayer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bPlayer.Image = global::FeebasBot.Properties.Resources.cursor;
+            this.bPlayer.Location = new System.Drawing.Point(3, 3);
+            this.bPlayer.Name = "bPlayer";
+            this.bPlayer.Size = new System.Drawing.Size(40, 40);
+            this.bPlayer.TabIndex = 8;
+            this.bPlayer.UseVisualStyleBackColor = false;
+            this.bPlayer.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btnVara_MouseDown);
+            this.bPlayer.MouseUp += new System.Windows.Forms.MouseEventHandler(this.bPlayer_MouseUp);
             // 
-            // Battlemanual
+            // label14
             // 
-            this.Battlemanual.AutoSize = true;
-            this.Battlemanual.Location = new System.Drawing.Point(79, 63);
-            this.Battlemanual.Name = "Battlemanual";
-            this.Battlemanual.Size = new System.Drawing.Size(180, 17);
-            this.Battlemanual.TabIndex = 19;
-            this.Battlemanual.Text = "Configuração manual da Batalha";
-            this.Battlemanual.UseVisualStyleBackColor = true;
-            this.Battlemanual.CheckedChanged += new System.EventHandler(this.Battlemanual_CheckedChanged);
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(50, 11);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(104, 26);
+            this.label14.TabIndex = 2;
+            this.label14.Text = "Arraste esse até \r\no pé do personagem";
+            // 
+            // bSquare
+            // 
+            this.bSquare.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.bSquare.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bSquare.Image = global::FeebasBot.Properties.Resources.cursor;
+            this.bSquare.Location = new System.Drawing.Point(3, 49);
+            this.bSquare.Name = "bSquare";
+            this.bSquare.Size = new System.Drawing.Size(40, 40);
+            this.bSquare.TabIndex = 10;
+            this.bSquare.UseVisualStyleBackColor = false;
+            this.bSquare.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btnVara_MouseDown);
+            this.bSquare.MouseUp += new System.Windows.Forms.MouseEventHandler(this.bSquare_MouseUp);
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(49, 50);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(103, 39);
+            this.label15.TabIndex = 9;
+            this.label15.Text = "Arraste esse até \r\no quadrado embaixo\r\ndo personagem";
+            // 
+            // panel10
+            // 
+            this.panel10.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel10.Controls.Add(this.bSave);
+            this.panel10.Controls.Add(this.label16);
+            this.panel10.Controls.Add(this.p8);
+            this.panel10.Controls.Add(this.p7);
+            this.panel10.Controls.Add(this.p6);
+            this.panel10.Controls.Add(this.p5);
+            this.panel10.Controls.Add(this.p4);
+            this.panel10.Controls.Add(this.p3);
+            this.panel10.Controls.Add(this.p2);
+            this.panel10.Controls.Add(this.p1);
+            this.panel10.Controls.Add(this.cShowLoot);
+            this.panel10.Location = new System.Drawing.Point(174, 6);
+            this.panel10.Name = "panel10";
+            this.panel10.Size = new System.Drawing.Size(173, 100);
+            this.panel10.TabIndex = 17;
+            // 
+            // cShowLoot
+            // 
+            this.cShowLoot.AutoSize = true;
+            this.cShowLoot.Location = new System.Drawing.Point(3, 4);
+            this.cShowLoot.Name = "cShowLoot";
+            this.cShowLoot.Size = new System.Drawing.Size(141, 17);
+            this.cShowLoot.TabIndex = 0;
+            this.cShowLoot.Text = "Mostrar posiçoes do loot";
+            this.cShowLoot.UseVisualStyleBackColor = true;
+            this.cShowLoot.CheckedChanged += new System.EventHandler(this.cShowLoot_CheckedChanged);
+            // 
+            // DrawPositions
+            // 
+            this.DrawPositions.Interval = 1;
+            this.DrawPositions.Tick += new System.EventHandler(this.DrawPositions_Tick);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(251, 125);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 18;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // p1
+            // 
+            this.p1.AutoSize = true;
+            this.p1.Location = new System.Drawing.Point(23, 30);
+            this.p1.Name = "p1";
+            this.p1.Size = new System.Drawing.Size(15, 14);
+            this.p1.TabIndex = 1;
+            this.p1.UseVisualStyleBackColor = true;
+            // 
+            // p2
+            // 
+            this.p2.AutoSize = true;
+            this.p2.Location = new System.Drawing.Point(44, 30);
+            this.p2.Name = "p2";
+            this.p2.Size = new System.Drawing.Size(15, 14);
+            this.p2.TabIndex = 2;
+            this.p2.UseVisualStyleBackColor = true;
+            // 
+            // p3
+            // 
+            this.p3.AutoSize = true;
+            this.p3.Location = new System.Drawing.Point(65, 30);
+            this.p3.Name = "p3";
+            this.p3.Size = new System.Drawing.Size(15, 14);
+            this.p3.TabIndex = 3;
+            this.p3.UseVisualStyleBackColor = true;
+            // 
+            // p4
+            // 
+            this.p4.AutoSize = true;
+            this.p4.Location = new System.Drawing.Point(23, 50);
+            this.p4.Name = "p4";
+            this.p4.Size = new System.Drawing.Size(15, 14);
+            this.p4.TabIndex = 4;
+            this.p4.UseVisualStyleBackColor = true;
+            // 
+            // p5
+            // 
+            this.p5.AutoSize = true;
+            this.p5.Location = new System.Drawing.Point(65, 50);
+            this.p5.Name = "p5";
+            this.p5.Size = new System.Drawing.Size(15, 14);
+            this.p5.TabIndex = 5;
+            this.p5.UseVisualStyleBackColor = true;
+            // 
+            // p6
+            // 
+            this.p6.AutoSize = true;
+            this.p6.Location = new System.Drawing.Point(23, 70);
+            this.p6.Name = "p6";
+            this.p6.Size = new System.Drawing.Size(15, 14);
+            this.p6.TabIndex = 6;
+            this.p6.UseVisualStyleBackColor = true;
+            // 
+            // p7
+            // 
+            this.p7.AutoSize = true;
+            this.p7.Location = new System.Drawing.Point(44, 70);
+            this.p7.Name = "p7";
+            this.p7.Size = new System.Drawing.Size(15, 14);
+            this.p7.TabIndex = 7;
+            this.p7.UseVisualStyleBackColor = true;
+            // 
+            // p8
+            // 
+            this.p8.AutoSize = true;
+            this.p8.Location = new System.Drawing.Point(65, 70);
+            this.p8.Name = "p8";
+            this.p8.Size = new System.Drawing.Size(15, 14);
+            this.p8.TabIndex = 8;
+            this.p8.UseVisualStyleBackColor = true;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(44, 51);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(14, 13);
+            this.label16.TabIndex = 9;
+            this.label16.Text = "P";
+            // 
+            // bSave
+            // 
+            this.bSave.Location = new System.Drawing.Point(86, 50);
+            this.bSave.Name = "bSave";
+            this.bSave.Size = new System.Drawing.Size(75, 23);
+            this.bSave.TabIndex = 10;
+            this.bSave.Text = "Salvar";
+            this.bSave.UseVisualStyleBackColor = true;
+            this.bSave.Click += new System.EventHandler(this.bSave_Click);
+            // 
+            // bSlot
+            // 
+            this.bSlot.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.bSlot.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bSlot.Image = global::FeebasBot.Properties.Resources.cursor;
+            this.bSlot.Location = new System.Drawing.Point(3, 141);
+            this.bSlot.Name = "bSlot";
+            this.bSlot.Size = new System.Drawing.Size(40, 40);
+            this.bSlot.TabIndex = 12;
+            this.bSlot.UseVisualStyleBackColor = false;
+            this.bSlot.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btnVara_MouseDown);
+            this.bSlot.MouseUp += new System.Windows.Forms.MouseEventHandler(this.bSlot_MouseUp);
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(50, 149);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(86, 26);
+            this.label17.TabIndex = 11;
+            this.label17.Text = "Arraste esse até \r\n1 slot do loot";
+            // 
+            // bCloseLoot
+            // 
+            this.bCloseLoot.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.bCloseLoot.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bCloseLoot.Image = global::FeebasBot.Properties.Resources.cursor;
+            this.bCloseLoot.Location = new System.Drawing.Point(3, 187);
+            this.bCloseLoot.Name = "bCloseLoot";
+            this.bCloseLoot.Size = new System.Drawing.Size(40, 40);
+            this.bCloseLoot.TabIndex = 14;
+            this.bCloseLoot.UseVisualStyleBackColor = false;
+            this.bCloseLoot.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btnVara_MouseDown);
+            this.bCloseLoot.MouseUp += new System.Windows.Forms.MouseEventHandler(this.bCloseLoot_MouseUp);
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(50, 195);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(86, 26);
+            this.label18.TabIndex = 13;
+            this.label18.Text = "Arraste esse até \r\no X do loot";
+            // 
+            // bOrder
+            // 
+            this.bOrder.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.bOrder.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bOrder.Image = global::FeebasBot.Properties.Resources.cursor;
+            this.bOrder.Location = new System.Drawing.Point(3, 95);
+            this.bOrder.Name = "bOrder";
+            this.bOrder.Size = new System.Drawing.Size(40, 40);
+            this.bOrder.TabIndex = 20;
+            this.bOrder.UseVisualStyleBackColor = false;
+            this.bOrder.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btnVara_MouseDown);
+            this.bOrder.MouseUp += new System.Windows.Forms.MouseEventHandler(this.bOrder_MouseUp);
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(50, 103);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(92, 26);
+            this.label19.TabIndex = 19;
+            this.label19.Text = "Arraste esse até o\r\nOrder";
             // 
             // Configuracao
             // 
@@ -820,6 +1140,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Configuracao";
             this.TopMost = true;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Configuracao_FormClosing);
             this.Load += new System.EventHandler(this.basescreen_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -832,6 +1153,9 @@
             this.tabPesca.PerformLayout();
             this.tabAtk.ResumeLayout(false);
             this.tabAtk.PerformLayout();
+            this.panel8.ResumeLayout(false);
+            this.panel8.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
             this.panel2.ResumeLayout(false);
@@ -844,9 +1168,11 @@
             this.tabLogin.PerformLayout();
             this.panel7.ResumeLayout(false);
             this.panel7.PerformLayout();
-            this.panel8.ResumeLayout(false);
-            this.panel8.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            this.tabLooting.ResumeLayout(false);
+            this.panel9.ResumeLayout(false);
+            this.panel9.PerformLayout();
+            this.panel10.ResumeLayout(false);
+            this.panel10.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -915,5 +1241,32 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.NumericUpDown numericUpDown1;
         private System.Windows.Forms.CheckBox Battlemanual;
+        private System.Windows.Forms.CheckBox cLoot;
+        private System.Windows.Forms.TabPage tabLooting;
+        private System.Windows.Forms.Panel panel10;
+        private System.Windows.Forms.CheckBox cShowLoot;
+        private System.Windows.Forms.Panel panel9;
+        private System.Windows.Forms.Button bSquare;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Button bPlayer;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Timer DrawPositions;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.CheckBox p8;
+        private System.Windows.Forms.CheckBox p7;
+        private System.Windows.Forms.CheckBox p6;
+        private System.Windows.Forms.CheckBox p5;
+        private System.Windows.Forms.CheckBox p4;
+        private System.Windows.Forms.CheckBox p3;
+        private System.Windows.Forms.CheckBox p2;
+        private System.Windows.Forms.CheckBox p1;
+        private System.Windows.Forms.Button bSave;
+        private System.Windows.Forms.Button bCloseLoot;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Button bSlot;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Button bOrder;
+        private System.Windows.Forms.Label label19;
     }
 }

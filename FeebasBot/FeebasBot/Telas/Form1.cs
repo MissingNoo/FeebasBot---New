@@ -179,13 +179,15 @@ namespace FeebasBot
             else { Setting.triestotal = 7; }
             if (Setting.PlayerOnScreen == false)
             {
+                if (Setting.Atacar == 1)
+                {
+                    Ataque.Atacar();
+                }
                 if (Setting.Pescar == 1 && Setting.PescarSemParar == 0)
                 {
+                    if (Setting.Lootear == 1) Looting.AbrirCorpos();
                     Pesca.Pescar();
                 }
-            }
-            if (Setting.PlayerOnScreen == false)
-            {
                 Setting.tries = 0;
                 if (Setting.Atacar == 1)
                 {
