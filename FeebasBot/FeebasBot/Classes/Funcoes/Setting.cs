@@ -6,6 +6,7 @@ namespace FeebasBot.Classes
 {
     public sealed class Setting
     {
+        public static bool UseHk { get; set; }
         public static bool click { get; set; }
         public static bool clicklock { get; set; }
         public static bool Kill { get; set; }
@@ -139,6 +140,7 @@ namespace FeebasBot.Classes
                 "m9 : " + Setting.m9,
                 "m10 : " + Setting.m10,
                 "Pescar : " + Setting.Pescar,
+                "PescarSemParar : " + Setting.PescarSemParar,
                 "Atacar : " + Setting.Atacar,
                 "Targetar : " + Setting.Targetar,
                 "Lootear : " + Setting.Lootear,

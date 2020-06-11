@@ -28,7 +28,7 @@ namespace FeebasBot.Classes.Bot
                 if (Setting.p6 == 1) { win32.RightClickLocked(Setting.SQMX - position - 16, Setting.SQMY); VerificarLoot(); }
                 if (Setting.p7 == 1) { win32.RightClickLocked(Setting.SQMX - 16, Setting.SQMY); VerificarLoot(); }
                 if (Setting.p8 == 1) { win32.RightClickLocked(Setting.SQMX + position - 16, Setting.SQMY); VerificarLoot(); }
-                Posicionar();
+                if (Setting.PescarSemParar == 0 && Setting.UseHk == false) Posicionar();
                 Setting.clicklock = false;
             }
         }

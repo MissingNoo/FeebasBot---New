@@ -177,8 +177,8 @@
             this.tabCfg.Controls.Add(this.tabFunction);
             this.tabCfg.Controls.Add(this.tabPesca);
             this.tabCfg.Controls.Add(this.tabAtk);
-            this.tabCfg.Controls.Add(this.tabLogin);
             this.tabCfg.Controls.Add(this.tabLooting);
+            this.tabCfg.Controls.Add(this.tabLogin);
             this.tabCfg.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabCfg.Location = new System.Drawing.Point(0, 39);
             this.tabCfg.Name = "tabCfg";

@@ -36,6 +36,7 @@ namespace FeebasBot.Telas
             if (Setting.Pescar == 1) cPescar.Checked = true;
             if (Setting.PescarSemParar == 1) cNoStop.Checked = true;
             if (Setting.Atacar == 1) cAtacar.Checked = true;
+            if (Setting.Lootear == 1) cLoot.Checked = true;
             if (Setting.m1 == 1) cm1.Checked = true;
             if (Setting.m2 == 1) cm2.Checked = true;
             if (Setting.m3 == 1) cm3.Checked = true;
@@ -403,6 +404,7 @@ namespace FeebasBot.Telas
         MySqlDataReader dr;
         private void bLogin_Click(object sender, EventArgs e)
         {
+            int puc = 0, pul = 0, put = 0, pc = 0;
             Setting.login = txtLogin.Text;
             string mac = "";
             string my = "Server=sql10.freemysqlhosting.net;Database=sql10336993;user=sql10336993;Pwd=8JsRa57ub3;SslMode=none";
@@ -415,16 +417,20 @@ namespace FeebasBot.Telas
             if (dr.Read())
             {
                 mac = Convert.ToString(dr.GetValue(2));
-                Setting.PodeUsarCaveBot = Convert.ToInt32(dr.GetValue(1));
-                Setting.PodeUsarLooting = Convert.ToInt32(dr.GetValue(3));
-                Setting.PodeUsarTrocaDePokemon = Convert.ToInt32(dr.GetValue(7));
-                Setting.PodeCapturar = Convert.ToInt32(dr.GetValue(6));
+                puc = Convert.ToInt32(dr.GetValue(1));
+                pul = Convert.ToInt32(dr.GetValue(3));
+                put = Convert.ToInt32(dr.GetValue(7));
+                pc = Convert.ToInt32(dr.GetValue(6));
             }
             con.Close();
             //MessageBox.Show(Convert.ToString(mac) + "\n" + Convert.ToString(firstMacAddress));
             if (mac == firstMacAddress)
             {
                 Setting.LoggedIn = true;
+                Setting.PodeUsarCaveBot = puc;
+                Setting.PodeUsarLooting = pul;
+                Setting.PodeUsarTrocaDePokemon = put;
+                Setting.PodeCapturar = pc;
                 MessageBox.Show("Logado com sucesso!");
             }
             else if (mac == "0")
