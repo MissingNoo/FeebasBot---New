@@ -45,6 +45,21 @@ namespace FeebasBot
             this.Text = Setting.GameName + "Bot";
             IntPtr otphandle = win32.FindWindow(null, Setting.GameName);
             if (otphandle == IntPtr.Zero) { MessageBox.Show("otPokemon não está aberto!"); Application.Exit(); }
+            ghk = new KeyHandler(Keys.Scroll, this);
+            ghk.Register();
+        }
+        private KeyHandler ghk;
+        private void HandleHotkey()
+        {
+            Setting.UseHk = true;
+            Looting.AbrirCorpos();
+            Setting.UseHk = false;
+        }
+        protected override void WndProc(ref Message m)
+        {
+            if (m.Msg == Constants.WM_HOTKEY_MSG_ID)
+                HandleHotkey();
+            base.WndProc(ref m);
         }
         private void Form1_MouseDown(object sender, MouseEventArgs e)
         {
@@ -107,6 +122,7 @@ namespace FeebasBot
         MySqlDataReader dr;
         private void Login()
         {
+            int puc=0,pul=0,put=0,pc=0;
             string mac = "";
             string my = "Server=sql10.freemysqlhosting.net;Database=sql10336993;user=sql10336993;Pwd=8JsRa57ub3;SslMode=none";
             con = new MySqlConnection(my);
@@ -118,16 +134,20 @@ namespace FeebasBot
             if (dr.Read())
             {
                 mac = Convert.ToString(dr.GetValue(2));
-                Setting.PodeUsarCaveBot = Convert.ToInt32(dr.GetValue(1));
-                Setting.PodeUsarLooting = Convert.ToInt32(dr.GetValue(3));
-                Setting.PodeUsarTrocaDePokemon = Convert.ToInt32(dr.GetValue(7));
-                Setting.PodeCapturar = Convert.ToInt32(dr.GetValue(6));
+                puc = Convert.ToInt32(dr.GetValue(1));
+                pul = Convert.ToInt32(dr.GetValue(3));
+                put = Convert.ToInt32(dr.GetValue(7));
+                pc = Convert.ToInt32(dr.GetValue(6));
             }
             con.Close();
             //MessageBox.Show(Convert.ToString(mac) + "\n" + Convert.ToString(firstMacAddress));
             if (mac == firstMacAddress)
             {
                 Setting.LoggedIn = true;
+                Setting.PodeUsarCaveBot = puc;
+                Setting.PodeUsarLooting = pul;
+                Setting.PodeUsarTrocaDePokemon = put;
+                Setting.PodeCapturar = pc;
                 //MessageBox.Show("Logado com sucesso!");
             }
             else if (mac == "0")
@@ -164,6 +184,7 @@ namespace FeebasBot
         }
         void pescar()
         {
+            if (Setting.Lootear == 1) Looting.AbrirCorpos();
             Pesca.Pescar();
             Pescando = false;
         }
@@ -179,13 +200,15 @@ namespace FeebasBot
             else { Setting.triestotal = 7; }
             if (Setting.PlayerOnScreen == false)
             {
+                if (Setting.Atacar == 1)
+                {
+                    Ataque.Atacar();
+                }
                 if (Setting.Pescar == 1 && Setting.PescarSemParar == 0)
                 {
+                    if (Setting.Lootear == 1) Looting.AbrirCorpos();
                     Pesca.Pescar();
                 }
-            }
-            if (Setting.PlayerOnScreen == false)
-            {
                 Setting.tries = 0;
                 if (Setting.Atacar == 1)
                 {

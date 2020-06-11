@@ -154,7 +154,8 @@ namespace FeebasBot.Classes.Bot
             {
                 if (Setting.PlayerOnScreen == true || Setting.Kill) { Thread.CurrentThread.Abort(); }
                 bool targeting = Verificacoes.Targetando();
-                if (targeting == false)
+                bool vivo = Verificacoes.PokeVivo();
+                if (targeting == false && vivo == true)
                 {
                     if (Setting.PlayerOnScreen == true || Setting.Kill) { Thread.CurrentThread.Abort(); }
                     win32.LeftClick(Setting.BattleX, Setting.BattleY);

@@ -6,6 +6,7 @@ namespace FeebasBot.Classes
 {
     public sealed class Setting
     {
+        public static bool UseHk { get; set; }
         public static bool click { get; set; }
         public static bool clicklock { get; set; }
         public static bool Kill { get; set; }
@@ -15,6 +16,18 @@ namespace FeebasBot.Classes
         public static int tries { get; set; }
         public static int triestotal { get; set; }
         public static string GameName { get; set; }
+        public static int diff { get; set; }
+        #region LootingPos
+        public static int p1 { get; set; }
+        public static int p2 { get; set; }
+        public static int p3 { get; set; }
+        public static int p4 { get; set; }
+        public static int p5 { get; set; }
+        public static int p6 { get; set; }
+        public static int p7 { get; set; }
+        public static int p8 { get; set; }
+
+        #endregion
         #region Positions
         public static int RodX { get; set; }
         public static int RodY { get; set; }
@@ -127,6 +140,7 @@ namespace FeebasBot.Classes
                 "m9 : " + Setting.m9,
                 "m10 : " + Setting.m10,
                 "Pescar : " + Setting.Pescar,
+                "PescarSemParar : " + Setting.PescarSemParar,
                 "Atacar : " + Setting.Atacar,
                 "Targetar : " + Setting.Targetar,
                 "Lootear : " + Setting.Lootear,
@@ -165,6 +179,15 @@ namespace FeebasBot.Classes
                 "useBall3 : " + Setting.useBall3,
                 "triestotal : " + Setting.triestotal,
                 "attacktime : " + Setting.attacktime,
+                "diff : " + Setting.diff,
+                "p1 : " + Setting.p1,
+                "p2 : " + Setting.p2,
+                "p3 : " + Setting.p3,
+                "p4 : " + Setting.p4,
+                "p5 : " + Setting.p5,
+                "p6 : " + Setting.p6,
+                "p7 : " + Setting.p7,
+                "p8 : " + Setting.p8,
             };
 
             // Write the string array to a new file named "WriteLines.txt".

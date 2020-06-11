@@ -9,6 +9,7 @@ using System.Drawing;
 using System.Linq;
 using System.Net.NetworkInformation;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -23,6 +24,7 @@ namespace FeebasBot.Telas
 
         private void basescreen_Load(object sender, EventArgs e)
         {
+            if (Setting.PodeUsarLooting == 0) cLoot.Enabled = false;
             numericUpDown1.Value = Setting.attacktime;
             gName.Text = Setting.GameName;
             if (Setting.login == "") { panel7.Visible = true; }
@@ -34,6 +36,7 @@ namespace FeebasBot.Telas
             if (Setting.Pescar == 1) cPescar.Checked = true;
             if (Setting.PescarSemParar == 1) cNoStop.Checked = true;
             if (Setting.Atacar == 1) cAtacar.Checked = true;
+            if (Setting.Lootear == 1) cLoot.Checked = true;
             if (Setting.m1 == 1) cm1.Checked = true;
             if (Setting.m2 == 1) cm2.Checked = true;
             if (Setting.m3 == 1) cm3.Checked = true;
@@ -44,8 +47,14 @@ namespace FeebasBot.Telas
             if (Setting.m8 == 1) cm8.Checked = true;
             if (Setting.m9 == 1) cm9.Checked = true;
             if (Setting.m10 == 1) cm10.Checked = true;
-
-
+            if (Setting.p1 == 1) p1.Checked = true;
+            if (Setting.p2 == 1) p2.Checked = true;
+            if (Setting.p3 == 1) p3.Checked = true;
+            if (Setting.p4 == 1) p4.Checked = true;
+            if (Setting.p5 == 1) p5.Checked = true;
+            if (Setting.p6 == 1) p6.Checked = true;
+            if (Setting.p7 == 1) p7.Checked = true;
+            if (Setting.p8 == 1) p8.Checked = true;
         }
 
         private void basescreen_MouseDown(object sender, MouseEventArgs e)
@@ -395,6 +404,7 @@ namespace FeebasBot.Telas
         MySqlDataReader dr;
         private void bLogin_Click(object sender, EventArgs e)
         {
+            int puc = 0, pul = 0, put = 0, pc = 0;
             Setting.login = txtLogin.Text;
             string mac = "";
             string my = "Server=sql10.freemysqlhosting.net;Database=sql10336993;user=sql10336993;Pwd=8JsRa57ub3;SslMode=none";
@@ -407,16 +417,20 @@ namespace FeebasBot.Telas
             if (dr.Read())
             {
                 mac = Convert.ToString(dr.GetValue(2));
-                Setting.PodeUsarCaveBot = Convert.ToInt32(dr.GetValue(1));
-                Setting.PodeUsarLooting = Convert.ToInt32(dr.GetValue(3));
-                Setting.PodeUsarTrocaDePokemon = Convert.ToInt32(dr.GetValue(7));
-                Setting.PodeCapturar = Convert.ToInt32(dr.GetValue(6));
+                puc = Convert.ToInt32(dr.GetValue(1));
+                pul = Convert.ToInt32(dr.GetValue(3));
+                put = Convert.ToInt32(dr.GetValue(7));
+                pc = Convert.ToInt32(dr.GetValue(6));
             }
             con.Close();
             //MessageBox.Show(Convert.ToString(mac) + "\n" + Convert.ToString(firstMacAddress));
             if (mac == firstMacAddress)
             {
                 Setting.LoggedIn = true;
+                Setting.PodeUsarCaveBot = puc;
+                Setting.PodeUsarLooting = pul;
+                Setting.PodeUsarTrocaDePokemon = put;
+                Setting.PodeCapturar = pc;
                 MessageBox.Show("Logado com sucesso!");
             }
             else if (mac == "0")
@@ -480,6 +494,134 @@ namespace FeebasBot.Telas
             if (Battlemanual.Checked)
             { panel4.Visible = true; }
             else { panel4.Visible = false; }
+        }
+
+        private void cLoot_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cLoot.Checked == true) { Setting.Lootear = 1; }
+            else { Setting.Lootear = 0; }
+        }
+
+        private void cShowLoot_CheckedChanged(object sender, EventArgs e)
+        {
+            Thread thread = new Thread(DrawLooting);
+            thread.Start();
+        }
+        public void DrawLooting()
+        {
+            int position = (Setting.SQMY - Setting.PlayerY);
+            while (cShowLoot.Checked == true)
+            {
+                IntPtr desktopPtr = win32.GetDC(IntPtr.Zero);
+                Graphics g = Graphics.FromHdc(desktopPtr);
+                SolidBrush b = new SolidBrush(Color.Red);
+                SolidBrush rec = new SolidBrush(Color.Purple);
+                g.FillRectangle(b, Setting.PlayerX - 16, Setting.PlayerY - 16, 32, 32);
+                // /\ <
+                if (Setting.p1 == 1) { g.FillRectangle(rec, Setting.SQMX - position - 16, Setting.SQMY - position * 2 - 16, 32, 32); }
+                if (Setting.p2 == 1) { g.FillRectangle(rec, Setting.SQMX - 16, Setting.SQMY - position * 2 - 16, 32, 32); }
+                if (Setting.p3 == 1) { g.FillRectangle(rec, Setting.SQMX + position - 16, Setting.SQMY - position * 2 - 16, 32, 32); }
+                if (Setting.p4 == 1) { g.FillRectangle(rec, Setting.SQMX - position - 16, Setting.SQMY - position - 16, 32, 32); }
+                if (Setting.p5 == 1) { g.FillRectangle(rec, Setting.SQMX + position - 16, Setting.SQMY - position - 16, 32, 32); }
+                if (Setting.p6 == 1) { g.FillRectangle(rec, Setting.SQMX - position - 16, Setting.SQMY - 16, 32, 32); }
+                if (Setting.p7 == 1) { g.FillRectangle(rec, Setting.SQMX - 16, Setting.SQMY - 16, 32, 32); }
+                if (Setting.p8 == 1) { g.FillRectangle(rec, Setting.SQMX + position - 16, Setting.SQMY - 16, 32, 32); }
+                g.Dispose();
+                win32.ReleaseDC(IntPtr.Zero, desktopPtr);
+            }
+        }
+
+        private void DrawPositions_Tick(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void bPlayer_MouseUp(object sender, MouseEventArgs e)
+        {
+            int xn = MousePosition.X;
+            int yn = MousePosition.Y;
+            DialogResult dialogResult = MessageBox.Show("Deseja salvar a posição do Player?", "Info", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                Setting.PlayerX = xn;
+                Setting.PlayerY = yn;
+                MessageBox.Show("Posição do Player salva!");
+            }
+        }
+
+        private void bSquare_MouseUp(object sender, MouseEventArgs e)
+        {
+            int xn = MousePosition.X;
+            int yn = MousePosition.Y;
+            DialogResult dialogResult = MessageBox.Show("Deseja salvar a posição do Quadrado?", "Info", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                Setting.SQMX = xn;
+                Setting.SQMY = yn;
+                MessageBox.Show("Posição do Quadrado salva!");
+            }
+        }
+
+        private void Configuracao_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            cShowLoot.Checked = false;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Looting.AbrirCorpos();
+        }
+
+        private void bSave_Click(object sender, EventArgs e)
+        {
+            if (p1.Checked == true) { Setting.p1 = 1; } else { Setting.p1 = 0; }
+            if (p2.Checked == true) { Setting.p2 = 1; } else { Setting.p2 = 0; }
+            if (p3.Checked == true) { Setting.p3 = 1; } else { Setting.p3 = 0; }
+            if (p4.Checked == true) { Setting.p4 = 1; } else { Setting.p4 = 0; }
+            if (p5.Checked == true) { Setting.p5 = 1; } else { Setting.p5 = 0; }
+            if (p6.Checked == true) { Setting.p6 = 1; } else { Setting.p6 = 0; }
+            if (p7.Checked == true) { Setting.p7 = 1; } else { Setting.p7 = 0; }
+            if (p8.Checked == true) { Setting.p8 = 1; } else { Setting.p8 = 0; }
+            Setting.SaveSettings();
+        }
+
+        private void bCloseLoot_MouseUp(object sender, MouseEventArgs e)
+        {
+            int xn = MousePosition.X;
+            int yn = MousePosition.Y;
+            DialogResult dialogResult = MessageBox.Show("Deseja salvar a posição de Fechar Loot?", "Info", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                Setting.CloseX = xn;
+                Setting.CloseY = yn;
+                MessageBox.Show("Posição de Fechar Loot salva!");
+            }
+        }
+
+        private void bSlot_MouseUp(object sender, MouseEventArgs e)
+        {
+            int xn = MousePosition.X;
+            int yn = MousePosition.Y;
+            DialogResult dialogResult = MessageBox.Show("Deseja salvar a posição do Slot?", "Info", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                Setting.SlotX = xn;
+                Setting.SlotY = yn;
+                MessageBox.Show("Posição do Slot salva!");
+            }
+        }
+
+        private void bOrder_MouseUp(object sender, MouseEventArgs e)
+        {
+            int xn = MousePosition.X;
+            int yn = MousePosition.Y;
+            DialogResult dialogResult = MessageBox.Show("Deseja salvar a posição do Order?", "Info", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                Setting.OrderX = xn;
+                Setting.OrderY = yn;
+                MessageBox.Show("Posição do Order salva!");
+            }
         }
     }
 }
