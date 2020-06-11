@@ -1,4 +1,5 @@
 ﻿using FeebasBot.Classes.Funcoes;
+using FeebasBot.Properties;
 using Org.BouncyCastle.Asn1.X509;
 using System;
 using System.Collections.Generic;
@@ -15,10 +16,12 @@ namespace FeebasBot.Classes.Bot
     {
         public static bool ConfigurarAtaque(int x, int y)
         {
+            bool hp = false;
             int maxy = y + 100;
             bool stop = false;
             bool found = false;
             string color = getpixel.GrabPixel(x, y);
+            Cursor.Position = new System.Drawing.Point(x, y);
             while (color != "0")
             {
                 if (y >= maxy)
@@ -33,8 +36,8 @@ namespace FeebasBot.Classes.Bot
                 color = getpixel.GrabPixel(x, y);
                 if (color == "0")
                 {
-                    found = true; 
-                    break; 
+                    found = true;
+                    break;
                 }
             }
             while (color == "0")
@@ -53,32 +56,111 @@ namespace FeebasBot.Classes.Bot
             }
             x++;
             if (stop == false)
-            {                
+            {
                 Setting.BattleX = x;
                 Setting.BattleY = y;
                 Setting.TargetX = x;
                 Setting.TargetY = y;
                 Setting.TargetX2 = x;
                 Setting.TargetY2 = y;
+                MessageBox.Show("Barra de HP Salva!");
+                hp = true;
             }
             else
             {
                 MessageBox.Show("Barra de HP não encontrada!");
             }
+            // "16777215"
+            #region Target
+            if (hp)
+            {
+                hp = false;
+                DialogResult dialogResult = MessageBox.Show("Deseja tentar a configuração automatica da Batalha?\nCOLOQUE A OPACIDADE EM 100% PARA FUNCIONAR!!!", "Info", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    Cursor.Position = new System.Drawing.Point(x, y);
+                    #region target1
+                    x = Setting.TargetX;
+                    y = Setting.TargetY;
+                    int maxx = x - 100;
+                    stop = false;
+                    found = false;
+                    win32.MoveMouse(Setting.BattleX, Setting.BattleY);
+                    color = getpixel.GrabPixel(x, y);
+                    while (color != "16777215")
+                    {
+                        if (x <= maxx)
+                        {
+                            stop = true;
+                            MessageBox.Show("Pixel não encontrado, tente novamente, ou faça manualmente!");
+                            break;
+                        }
+                        else
+                        {
+                            x--;
+                        }
+                        color = getpixel.GrabPixel(x, y);
+                        if (color == "16777215")
+                        {
+                            found = true;
+                            Setting.TargetX = x;
+                            hp = true;
+                            break;
+                        }
+                    }
+                    #endregion
+                    #region Target2
+                    x = Setting.TargetX;
+                    y = Setting.TargetY2;
+                    maxy = y - 20;
+                    stop = false;
+                    found = false;
+                    win32.MoveMouse(Setting.BattleX, Setting.BattleY);
+                    color = getpixel.GrabPixel(x, y);
+                    if (hp)
+                    {
+                        while (color != "2298123")
+                        {
+                            if (y <= maxy)
+                            {
+                                stop = true;
+                                MessageBox.Show("Pixel não encontrado, tente novamente, ou faça manualmente!");
+                                break;
+                            }
+                            else
+                            {
+                                y--;
+                            }
+                            color = getpixel.GrabPixel(x, y);
+                            if (color == "2298123")
+                            {
+                                found = true;
+                                Setting.TargetY2 = y + 1;
+                                Setting.TargetX2 = x;
+                                MessageBox.Show("Batalha Configurada!");
+                                break;
+                            }
+                        }
+                    }
+                    #endregion
+                }
+            }
+            #endregion
             return found;
         }
         public static void Atacar()
         {
             while (true)
             {
-                if (Setting.PlayerOnScreen == true) { Thread.CurrentThread.Abort(); }
+                if (Setting.PlayerOnScreen == true || Setting.Kill) { Thread.CurrentThread.Abort(); }
                 bool targeting = Verificacoes.Targetando();
                 if (targeting == false)
                 {
+                    if (Setting.PlayerOnScreen == true || Setting.Kill) { Thread.CurrentThread.Abort(); }
                     win32.LeftClick(Setting.BattleX, Setting.BattleY);
-                    if (Setting.tries < 7)
+                    if (Setting.tries < Setting.triestotal)
                     {
-                        if (Setting.Pescar == 1)
+                        if (Setting.Pescar == 1 )
                         {
                             Setting.tries++;
                         }                        
@@ -99,8 +181,7 @@ namespace FeebasBot.Classes.Bot
         {
             while (true)
             {
-                if (Setting.PlayerOnScreen == true) { Thread.CurrentThread.Abort(); }
-                Setting.attacktime = 350;
+                if (Setting.PlayerOnScreen == true || Setting.Kill) { Thread.CurrentThread.Abort(); }
                 Verificacoes.Targetar();
                 if (Verificacoes.PokeVivo() == false) { break; }
                 if (Setting.m1 == 1) { win32.SendKeys(Keys.F1); }

@@ -23,6 +23,7 @@ namespace FeebasBot.Telas
 
         private void basescreen_Load(object sender, EventArgs e)
         {
+            numericUpDown1.Value = Setting.attacktime;
             gName.Text = Setting.GameName;
             if (Setting.login == "") { panel7.Visible = true; }
             if (Setting.PodeUsarLooting == 1) { lLooting.ForeColor = Color.Green; } else { lLooting.ForeColor = Color.Red; }
@@ -160,7 +161,6 @@ namespace FeebasBot.Telas
                 uint pixeldown = Convert.ToUInt32(getpixel.GrabPixel(Setting.TargetX, Setting.TargetY + 1));
                 Color colordown = Color.FromArgb((int)(pixeldown & 0x000000FF), (int)(pixeldown & 0x0000FF00) >> 8, (int)(pixeldown & 0x00FF0000) >> 16);
                 ManualDown.BackColor = colordown;
-                if (pixel.ToString() == "16777215") { cManualConfig1.ForeColor = Color.Green; } else { cManualConfig1.ForeColor = Color.Black; }
             }
             if (cManualConfig2.Checked)
             {
@@ -184,7 +184,6 @@ namespace FeebasBot.Telas
                 uint pixeldown = Convert.ToUInt32(getpixel.GrabPixel(Setting.TargetX2, Setting.TargetY2 + 1));
                 Color colordown = Color.FromArgb((int)(pixeldown & 0x000000FF), (int)(pixeldown & 0x0000FF00) >> 8, (int)(pixeldown & 0x00FF0000) >> 16);
                 ManualDown.BackColor = colordown;
-                if (pixel.ToString() == "16777215") { cManualConfig2.ForeColor = Color.Green; } else { cManualConfig2.ForeColor = Color.Black; }
             }
             if (!cManualConfig1.Checked && !cManualConfig2.Checked)
             {
@@ -461,6 +460,26 @@ namespace FeebasBot.Telas
         {
             if (cNoStop.Checked == true) { Setting.PescarSemParar = 1; }
             else { Setting.PescarSemParar = 0; }
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            string pixel = getpixel.GrabPixel(Setting.TargetX, Setting.TargetY);
+            if (pixel == "16777215") { cManualConfig1.ForeColor = Color.Green; } else { cManualConfig1.ForeColor = Color.Black; }
+            string pixel2 = getpixel.GrabPixel(Setting.TargetX, Setting.TargetY);
+            if (pixel2 == "16777215") { cManualConfig2.ForeColor = Color.Green; timer1.Stop(); } else { cManualConfig2.ForeColor = Color.Black; }
+        }
+
+        private void numericUpDown1_ValueChanged(object sender, EventArgs e)
+        {
+            Setting.attacktime = Convert.ToInt32(numericUpDown1.Value);
+        }
+
+        private void Battlemanual_CheckedChanged(object sender, EventArgs e)
+        {
+            if (Battlemanual.Checked)
+            { panel4.Visible = true; }
+            else { panel4.Visible = false; }
         }
     }
 }
