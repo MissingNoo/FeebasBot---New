@@ -124,6 +124,7 @@
     <Compile Include="Classes\Bot\Bot.cs" />
     <Compile Include="Classes\Bot\Looting.cs" />
     <Compile Include="Classes\Bot\Pesca.cs" />
+    <Compile Include="Classes\Bot\TrocaDePoke.cs" />
     <Compile Include="Classes\Funcoes\DalHelper.cs" />
     <Compile Include="Classes\Funcoes\FormsV.cs" />
     <Compile Include="Classes\Funcoes\getpixel.cs" />
@@ -225,6 +226,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="349 Feebas.ico" />
+    <None Include="Resources\por.png" />
     <EmbeddedResource Include="alarm.wav">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>

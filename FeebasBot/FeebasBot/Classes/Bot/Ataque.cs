@@ -226,5 +226,27 @@ namespace FeebasBot.Classes.Bot
                 Thread.Sleep(Setting.attacktime);
             }
         }
+        public static void MovesSemTarget()
+        {
+            if (Setting.m1 == 1) { win32.SendKeys(Keys.F1); }
+            Thread.Sleep(Setting.attacktime);
+            if (Setting.m2 == 1) { win32.SendKeys(Keys.F2); }
+            Thread.Sleep(Setting.attacktime);
+            if (Setting.m3 == 1) { win32.SendKeys(Keys.F3); }
+            Thread.Sleep(Setting.attacktime);
+            if (Setting.m4 == 1) { win32.SendKeys(Keys.F4); }
+            Thread.Sleep(Setting.attacktime);
+            if (Setting.m5 == 1) { win32.SendKeys(Keys.F5); }
+            Thread.Sleep(Setting.attacktime);
+            if (Setting.m6 == 1) { win32.SendKeys(Keys.F6); }
+            Thread.Sleep(Setting.attacktime);
+            if (Setting.m7 == 1) { win32.SendKeys(Keys.F7); }
+            Thread.Sleep(Setting.attacktime);
+            if (Setting.m8 == 1) { win32.SendKeys(Keys.F8); }
+            Thread.Sleep(Setting.attacktime);
+            if (Setting.m9 == 1) { win32.SendKeys(Keys.F9); }
+            Thread.Sleep(Setting.attacktime);
+            if (Setting.m10 == 1) { win32.SendKeys(Keys.F10); }
+        }
     }
 }

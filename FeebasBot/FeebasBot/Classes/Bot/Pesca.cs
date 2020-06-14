@@ -13,6 +13,53 @@ namespace FeebasBot.Classes.Bot
     {
         public static bool Pescar()
         {
+            int dir = 8;
+            #region random
+            Random rnd = new Random();
+            if (Setting.random == 1)
+            {
+                dir = rnd.Next(0, 8);
+            }
+            else
+            {
+                dir = 8;
+            }
+
+            int wx = Setting.WaterX, wy = Setting.WaterY;
+            switch (dir)
+            {
+                case 0:
+                    wx = wx + 64; //direita
+                    break;
+                case 1:
+                    wx = wx - 64; //esquerda
+                    break;
+                case 2:
+                    wy = wy + 64; // baixo
+                    break;
+                case 3:
+                    wy = wy - 64; //cima
+                    break;
+                case 4:
+                    wx = wx + 64; //direita
+                    wy = wy + 64; // baixo
+                    break;
+                case 5:
+                    wx = wx - 64; //esquerda
+                    wy = wy + 64; // baixo
+                    break;
+                case 6:
+                    wx = wx + 64; //direita
+                    wy = wy - 64; //cima
+                    break;
+                case 7:
+                    wx = wx - 64; //esquerda
+                    wy = wy - 64; //cima
+                    break;
+                case 8:
+                    break;
+            }
+#endregion
             int time = 0;
             Thread.Sleep(500);
             bool pescou = false;
@@ -21,7 +68,7 @@ namespace FeebasBot.Classes.Bot
             win32.LeftClickLocked(0, 0);
             win32.LeftClickLocked(Setting.RodX, Setting.RodY);//clicar na vara
             Thread.Sleep(200);
-            win32.LeftClickLocked(Setting.WaterX, Setting.WaterY);//clicar na agua
+            win32.LeftClickLocked(wx, wy);//clicar na agua
             Thread.Sleep(200);
             win32.LeftClickLocked(0, 0);
             Setting.clicklock = false;
@@ -45,6 +92,8 @@ namespace FeebasBot.Classes.Bot
             if (Setting.PlayerOnScreen == true || Setting.Kill) { Thread.CurrentThread.Abort(); }
             win32.LeftClick(Setting.FishX, Setting.FishY);
             win32.MoveMouse(0, 0);
+            if (Setting.AtacarSemTarget == 1)
+            { Ataque.MovesSemTarget(); }
             pescou = true;
             return pescou;
         }

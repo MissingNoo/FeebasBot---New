@@ -41,6 +41,7 @@
             this.bCave = new System.Windows.Forms.Button();
             this.Run = new System.Windows.Forms.Timer(this.components);
             this.Open = new System.Windows.Forms.Timer(this.components);
+            this.Troca = new System.Windows.Forms.Timer(this.components);
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -159,6 +160,11 @@
             this.Open.Interval = 1000;
             this.Open.Tick += new System.EventHandler(this.Open_Tick);
             // 
+            // Troca
+            // 
+            this.Troca.Interval = 250;
+            this.Troca.Tick += new System.EventHandler(this.Troca_Tick);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -196,6 +202,7 @@
         private System.Windows.Forms.Button bCave;
         private System.Windows.Forms.Timer Run;
         private System.Windows.Forms.Timer Open;
+        private System.Windows.Forms.Timer Troca;
     }
 }
 

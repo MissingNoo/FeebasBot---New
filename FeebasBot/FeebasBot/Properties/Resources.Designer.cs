@@ -121,6 +121,16 @@ namespace FeebasBot.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap por {
+            get {
+                object obj = ResourceManager.GetObject("por", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap vara {
             get {
                 object obj = ResourceManager.GetObject("vara", resourceCulture);

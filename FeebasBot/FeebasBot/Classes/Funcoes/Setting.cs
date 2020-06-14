@@ -69,6 +69,8 @@ namespace FeebasBot.Classes
         public static int Poke5Y { get; set; }
         public static int Poke6X { get; set; }
         public static int Poke6Y { get; set; }
+        public static int poke { get; set; }
+        public static bool verificandopoke{ get; set; }
         #endregion
         #region Moves
         public static int attacktime { get; set; }
@@ -87,6 +89,7 @@ namespace FeebasBot.Classes
         public static int Pescar { get; set; }
         public static int PescarSemParar { get; set; }
         public static int Atacar { get; set; }
+        public static int AtacarSemTarget { get; set; }
         public static int TrocarDePokemon { get; set; }
         public static int Targetar { get; set; }
         public static int Lootear { get; set; }
@@ -142,6 +145,7 @@ namespace FeebasBot.Classes
                 "Pescar : " + Setting.Pescar,
                 "PescarSemParar : " + Setting.PescarSemParar,
                 "Atacar : " + Setting.Atacar,
+                "AtacarSemTarget : " + Setting.AtacarSemTarget,
                 "Targetar : " + Setting.Targetar,
                 "Lootear : " + Setting.Lootear,
                 "TrocarDePokemon : " + Setting.TrocarDePokemon,
@@ -156,10 +160,6 @@ namespace FeebasBot.Classes
                 "OrderX : " + Setting.OrderX,
                 "OrderY : " + Setting.OrderY,
                 "login : " + Setting.login,
-                "Poke1X : " + Setting.Poke1X,
-                "Poke1Y : " + Setting.Poke1Y,
-                "Poke2X : " + Setting.Poke2X,
-                "Poke2Y : " + Setting.Poke2Y,
                 "PortraitX : " + Setting.PortraitX,
                 "PortraitY : " + Setting.PortraitY,
                 "portraitdead : " + Setting.portraitdead,
@@ -188,6 +188,18 @@ namespace FeebasBot.Classes
                 "p6 : " + Setting.p6,
                 "p7 : " + Setting.p7,
                 "p8 : " + Setting.p8,
+                "Poke1X : " + Setting.Poke1X,
+                "Poke1Y : " + Setting.Poke1Y,
+                "Poke2X : " + Setting.Poke2X,
+                "Poke2Y : " + Setting.Poke2Y,
+                "Poke3X : " + Setting.Poke1X,
+                "Poke3Y : " + Setting.Poke1Y,
+                "Poke4X : " + Setting.Poke2X,
+                "Poke4Y : " + Setting.Poke2Y,
+                "Poke5X : " + Setting.Poke1X,
+                "Poke5Y : " + Setting.Poke1Y,
+                "Poke6X : " + Setting.Poke2X,
+                "Poke6Y : " + Setting.Poke2Y,
             };
 
             // Write the string array to a new file named "WriteLines.txt".

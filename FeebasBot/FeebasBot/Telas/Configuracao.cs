@@ -24,18 +24,21 @@ namespace FeebasBot.Telas
 
         private void basescreen_Load(object sender, EventArgs e)
         {
+            if (Setting.attacktime < 100) Setting.attacktime = 100;
             if (Setting.PodeUsarLooting == 0) cLoot.Enabled = false;
             numericUpDown1.Value = Setting.attacktime;
             gName.Text = Setting.GameName;
-            if (Setting.login == "") { panel7.Visible = true; }
+            if (Setting.login == "" || Setting.login == null) { panel7.Visible = true; }
             if (Setting.PodeUsarLooting == 1) { lLooting.ForeColor = Color.Green; } else { lLooting.ForeColor = Color.Red; }
-            if (Setting.PodeUsarTrocaDePokemon== 1) { lTroca.ForeColor = Color.Green; } else { lTroca.ForeColor = Color.Red; }
+            if (Setting.PodeUsarTrocaDePokemon== 1) { cTrocaDePoke.Enabled = true; lTroca.ForeColor = Color.Green; } else { cTrocaDePoke.Enabled = false; lTroca.ForeColor = Color.Red; }
             if (Setting.PodeCapturar == 1) { lCatch.ForeColor = Color.Green; } else { lCatch.ForeColor = Color.Red; }
             if (Setting.PodeUsarCaveBot == 1) { lCave.ForeColor = Color.Green; } else { lCave.ForeColor = Color.Red; }
             label10.Text = Setting.login;
-            if (Setting.Pescar == 1) cPescar.Checked = true;
+            if (Setting.Pescar == 1) { cPescar.Checked = true; cNoStop.Enabled = true; cRandom.Enabled = true; } else { cNoStop.Enabled = false; cRandom.Enabled = false; }
+            if (Setting.random == 1) { cRandom.Checked = true; } else { cRandom.Checked = false; }
             if (Setting.PescarSemParar == 1) cNoStop.Checked = true;
-            if (Setting.Atacar == 1) cAtacar.Checked = true;
+            if (Setting.Atacar == 1) { cAtacar.Checked = true; cSemTarget.Enabled = true; } else { cSemTarget.Enabled = false; }
+            if (Setting.AtacarSemTarget == 1) cSemTarget.Checked = true;
             if (Setting.Lootear == 1) cLoot.Checked = true;
             if (Setting.m1 == 1) cm1.Checked = true;
             if (Setting.m2 == 1) cm2.Checked = true;
@@ -379,14 +382,14 @@ namespace FeebasBot.Telas
 
         private void cPescar_CheckedChanged(object sender, EventArgs e)
         {
-            if (cPescar.Checked == true) { Setting.Pescar = 1; }
-            else { Setting.Pescar = 0; }
+            if (cPescar.Checked == true) { Setting.Pescar = 1; cNoStop.Enabled = true; cRandom.Enabled = true; }
+            else { Setting.Pescar = 0; cNoStop.Enabled = false;cRandom.Enabled = false; }
         }
 
         private void cAtacar_CheckedChanged(object sender, EventArgs e)
         {
-            if (cAtacar.Checked == true) { Setting.Atacar = 1; }
-            else { Setting.Atacar = 0; }
+            if (cAtacar.Checked == true) { Setting.Atacar = 1; cSemTarget.Enabled = true; }
+            else { Setting.Atacar = 0; cSemTarget.Enabled = false; cSemTarget.Checked = false; }
         }
 
         private void tabFunction_Click(object sender, EventArgs e)
@@ -622,6 +625,119 @@ namespace FeebasBot.Telas
                 Setting.OrderY = yn;
                 MessageBox.Show("Posição do Order salva!");
             }
+        }
+
+        private void cSemTarget_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cSemTarget.Checked == true) { Setting.AtacarSemTarget = 1; } else { Setting.AtacarSemTarget = 0; }
+        }
+
+        private void cRandom_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cRandom.Enabled == true) { Setting.random = 1; } else { Setting.random = 0; }
+        }
+
+        private void cTrocaDePoke_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cTrocaDePoke.Enabled == true) { Setting.TrocarDePokemon = 1; } else { Setting.TrocarDePokemon = 0; }
+        }
+
+        private void bPoke1_MouseUp(object sender, MouseEventArgs e)
+        {
+            int xn = MousePosition.X;
+            int yn = MousePosition.Y;
+            DialogResult dialogResult = MessageBox.Show("Deseja salvar a posição do Pokemon?", "Info", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                Setting.Poke1X = xn;
+                Setting.Poke1Y = yn;
+                MessageBox.Show("Posição do Pokemon salva!");
+            }
+        }
+
+        private void bPoke2_MouseUp(object sender, MouseEventArgs e)
+        {
+            int xn = MousePosition.X;
+            int yn = MousePosition.Y;
+            DialogResult dialogResult = MessageBox.Show("Deseja salvar a posição do Pokemon?", "Info", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                Setting.Poke2X = xn;
+                Setting.Poke2Y = yn;
+                MessageBox.Show("Posição do Pokemon salva!");
+            }
+        }
+
+        private void bPoke3_MouseUp(object sender, MouseEventArgs e)
+        {
+            int xn = MousePosition.X;
+            int yn = MousePosition.Y;
+            DialogResult dialogResult = MessageBox.Show("Deseja salvar a posição do Pokemon?", "Info", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                Setting.Poke3X = xn;
+                Setting.Poke3Y = yn;
+                MessageBox.Show("Posição do Pokemon salva!");
+            }
+        }
+
+        private void bPoke4_MouseUp(object sender, MouseEventArgs e)
+        {
+            int xn = MousePosition.X;
+            int yn = MousePosition.Y;
+            DialogResult dialogResult = MessageBox.Show("Deseja salvar a posição do Pokemon?", "Info", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                Setting.Poke4X = xn;
+                Setting.Poke4Y = yn;
+                MessageBox.Show("Posição do Pokemon salva!");
+            }
+        }
+
+        private void bPoke5_MouseUp(object sender, MouseEventArgs e)
+        {
+            int xn = MousePosition.X;
+            int yn = MousePosition.Y;
+            DialogResult dialogResult = MessageBox.Show("Deseja salvar a posição do Pokemon?", "Info", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                Setting.Poke5X = xn;
+                Setting.Poke5Y = yn;
+                MessageBox.Show("Posição do Pokemon salva!");
+            }
+        }
+
+        private void bPoke6_MouseUp(object sender, MouseEventArgs e)
+        {
+            int xn = MousePosition.X;
+            int yn = MousePosition.Y;
+            DialogResult dialogResult = MessageBox.Show("Deseja salvar a posição do Pokemon?", "Info", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                Setting.Poke6X = xn;
+                Setting.Poke6Y = yn;
+                MessageBox.Show("Posição do Pokemon salva!");
+            }
+        }
+
+        private void bPortrait_MouseUp(object sender, MouseEventArgs e)
+        {
+            int xn = MousePosition.X;
+            int yn = MousePosition.Y;
+            DialogResult dialogResult = MessageBox.Show("Deseja salvar a posição do Portrait?", "Info", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                Setting.PortraitX = xn;
+                Setting.PortraitY = yn;
+                Setting.portraitdead = getpixel.GrabPixel(xn, yn);
+                MessageBox.Show("Posição do Portrait salva!");
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Thread thread = new Thread(TrocaDePoke.VerificarMorto);
+            thread.Start();
         }
     }
 }

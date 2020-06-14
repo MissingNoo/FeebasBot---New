@@ -30,6 +30,8 @@ namespace FeebasBot
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
             Setting.SaveSettings();
+            Setting.Kill = true;
+            Run.Stop();
             IntPtr otpHandle = win32.FindWindow(null, Setting.GameName);
             win32.SetWindowText(otpHandle, "otPokemon");
         }
@@ -45,7 +47,7 @@ namespace FeebasBot
             this.Text = Setting.GameName + "Bot";
             IntPtr otphandle = win32.FindWindow(null, Setting.GameName);
             if (otphandle == IntPtr.Zero) { MessageBox.Show("otPokemon não está aberto!"); Application.Exit(); }
-            ghk = new KeyHandler(Keys.Scroll, this);
+            ghk = new KeyHandler(Keys.Insert, this);
             ghk.Register();
         }
         private KeyHandler ghk;
@@ -174,6 +176,8 @@ namespace FeebasBot
         #endregion
         private void bStart_Click(object sender, EventArgs e)
         {
+            if (Setting.TrocarDePokemon == 1) { Troca.Start(); }
+            Setting.verificandopoke = false;
             Setting.Kill = false;
             Pescando = false;
             Pescou = false;
@@ -192,6 +196,7 @@ namespace FeebasBot
         {
             Setting.Kill = true;
             Run.Stop();
+            Troca.Stop();
             bStart.BackColor = Color.Red;
         }
         void start()
@@ -200,7 +205,7 @@ namespace FeebasBot
             else { Setting.triestotal = 7; }
             if (Setting.PlayerOnScreen == false)
             {
-                if (Setting.Atacar == 1)
+                if (Setting.Atacar == 1 && Setting.AtacarSemTarget == 0)
                 {
                     Ataque.Atacar();
                 }
@@ -212,7 +217,8 @@ namespace FeebasBot
                 Setting.tries = 0;
                 if (Setting.Atacar == 1)
                 {
-                    Ataque.Atacar();
+                    if (Setting.AtacarSemTarget == 0)
+                    { Ataque.Atacar(); }
                 }
                 Setting.Running = true;
             }
@@ -243,6 +249,13 @@ namespace FeebasBot
             this.Text = Setting.GameName + "Bot";
             if (Setting.GameName != "otPokemon") { label1.Text = Setting.GameName; }
             nIcon.Text = "Clique duas vezes para abrir a janela do bot!\nChar: " + Setting.GameName;
+        }
+
+        private void Troca_Tick(object sender, EventArgs e)
+        {
+            Thread thread = new Thread(TrocaDePoke.VerificarMorto);
+            if (Setting.verificandopoke == false) { thread.Start();Setting.verificandopoke = true; }
+            if (Setting.PlayerOnScreen == true) { Run.Stop(); bStart.BackColor = Color.Red; FormsV.playSound("alarm.wav"); }
         }
     }
 }
