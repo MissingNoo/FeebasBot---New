@@ -201,7 +201,8 @@ namespace FeebasBot
         }
         void start()
         {
-            if (Setting.PescarSemParar == 1) { Setting.triestotal = 20; }
+            
+            if (Setting.PescarSemParar == 1) { Setting.triestotal = 30; }
             else { Setting.triestotal = 7; }
             if (Setting.PlayerOnScreen == false)
             {
@@ -212,6 +213,7 @@ namespace FeebasBot
                 if (Setting.Pescar == 1 && Setting.PescarSemParar == 0)
                 {
                     if (Setting.Lootear == 1) Looting.AbrirCorpos();
+                    if (Setting.catchpoke == 1) Catch.JogarBall();
                     Pesca.Pescar();
                 }
                 Setting.tries = 0;
@@ -222,6 +224,7 @@ namespace FeebasBot
                 }
                 Setting.Running = true;
             }
+            Chat.CheckChat();
         }
 
         
@@ -250,11 +253,11 @@ namespace FeebasBot
             if (Setting.GameName != "otPokemon") { label1.Text = Setting.GameName; }
             nIcon.Text = "Clique duas vezes para abrir a janela do bot!\nChar: " + Setting.GameName;
         }
-
+        int f = 0;
         private void Troca_Tick(object sender, EventArgs e)
         {
             Thread thread = new Thread(TrocaDePoke.VerificarMorto);
-            if (Setting.verificandopoke == false) { thread.Start();Setting.verificandopoke = true; }
+            if (Setting.verificandopoke == false) { thread.Start();Setting.verificandopoke = true; if (f == 0) Thread.Sleep(3000); f = 1; }
             if (Setting.PlayerOnScreen == true) { Run.Stop(); bStart.BackColor = Color.Red; FormsV.playSound("alarm.wav"); }
         }
     }

@@ -122,6 +122,8 @@
   <ItemGroup>
     <Compile Include="Classes\Bot\Ataque.cs" />
     <Compile Include="Classes\Bot\Bot.cs" />
+    <Compile Include="Classes\Bot\Catch.cs" />
+    <Compile Include="Classes\Bot\Chat.cs" />
     <Compile Include="Classes\Bot\Looting.cs" />
     <Compile Include="Classes\Bot\Pesca.cs" />
     <Compile Include="Classes\Bot\TrocaDePoke.cs" />
@@ -226,6 +228,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="349 Feebas.ico" />
+    <None Include="Resources\padrao.png" />
     <None Include="Resources\por.png" />
     <EmbeddedResource Include="alarm.wav">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

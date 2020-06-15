@@ -21,6 +21,7 @@ namespace FeebasBot.Telas
         {
             InitializeComponent();
         }
+        int testx, testy;
 
         private void basescreen_Load(object sender, EventArgs e)
         {
@@ -31,7 +32,7 @@ namespace FeebasBot.Telas
             if (Setting.login == "" || Setting.login == null) { panel7.Visible = true; }
             if (Setting.PodeUsarLooting == 1) { lLooting.ForeColor = Color.Green; } else { lLooting.ForeColor = Color.Red; }
             if (Setting.PodeUsarTrocaDePokemon== 1) { cTrocaDePoke.Enabled = true; lTroca.ForeColor = Color.Green; } else { cTrocaDePoke.Enabled = false; lTroca.ForeColor = Color.Red; }
-            if (Setting.PodeCapturar == 1) { lCatch.ForeColor = Color.Green; } else { lCatch.ForeColor = Color.Red; }
+            if (Setting.PodeCapturar == 1) { lCatch.ForeColor = Color.Green; cCatch.Enabled = true; } else { lCatch.ForeColor = Color.Red;cCatch.Enabled = false; }
             if (Setting.PodeUsarCaveBot == 1) { lCave.ForeColor = Color.Green; } else { lCave.ForeColor = Color.Red; }
             label10.Text = Setting.login;
             if (Setting.Pescar == 1) { cPescar.Checked = true; cNoStop.Enabled = true; cRandom.Enabled = true; } else { cNoStop.Enabled = false; cRandom.Enabled = false; }
@@ -40,6 +41,8 @@ namespace FeebasBot.Telas
             if (Setting.Atacar == 1) { cAtacar.Checked = true; cSemTarget.Enabled = true; } else { cSemTarget.Enabled = false; }
             if (Setting.AtacarSemTarget == 1) cSemTarget.Checked = true;
             if (Setting.Lootear == 1) cLoot.Checked = true;
+            if (Setting.TrocarDePokemon == 1) cTrocaDePoke.Checked = true;
+            if (Setting.catchpoke == 1) cCatch.Checked = true;
             if (Setting.m1 == 1) cm1.Checked = true;
             if (Setting.m2 == 1) cm2.Checked = true;
             if (Setting.m3 == 1) cm3.Checked = true;
@@ -475,8 +478,8 @@ namespace FeebasBot.Telas
 
         private void cNoStop_CheckedChanged(object sender, EventArgs e)
         {
-            if (cNoStop.Checked == true) { Setting.PescarSemParar = 1; }
-            else { Setting.PescarSemParar = 0; }
+            if (cNoStop.Checked == true) { Setting.PescarSemParar = 1; if (Setting.PodeCapturar == 1) { cCatch.Enabled = false; } }
+            else { Setting.PescarSemParar = 0; if (Setting.PodeCapturar == 1) { cCatch.Enabled = true; } }
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -738,6 +741,65 @@ namespace FeebasBot.Telas
         {
             Thread thread = new Thread(TrocaDePoke.VerificarMorto);
             thread.Start();
+        }
+
+        private void bSquare2_MouseUp(object sender, MouseEventArgs e)
+        {
+            int xn = MousePosition.X;
+            int yn = MousePosition.Y;
+            DialogResult dialogResult = MessageBox.Show("Deseja salvar a posição do Quadrado?", "Info", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                Setting.SQMBX = xn;
+                Setting.SQMBY = yn;
+                MessageBox.Show("Posição do Quadrado salva!");
+            }
+        }
+
+        private void bTestBall_Click(object sender, EventArgs e)
+        {
+            Catch.JogarBall();
+        }
+
+        private void bSlotBall_MouseUp(object sender, MouseEventArgs e)
+        {
+            int xn = MousePosition.X;
+            int yn = MousePosition.Y;
+            DialogResult dialogResult = MessageBox.Show("Deseja salvar a posição da Pokebola?", "Info", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                Setting.pokeballX = xn;
+                Setting.pokeballY = yn;
+                MessageBox.Show("Posição da Pokebola salva!");
+            }
+        }
+
+        private void button3_MouseUp(object sender, MouseEventArgs e)
+        {
+            int xn = MousePosition.X;
+            int yn = MousePosition.Y;
+            DialogResult dialogResult = MessageBox.Show("Deseja configurar o alarme de chat?", "Info", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                Setting.ChatY = yn;
+                Chat.ChatCoords(xn, yn);
+            }
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            Setting.ChatY = 0;
+        }
+
+        private void bLogout_Click(object sender, EventArgs e)
+        {
+            Setting.login = null;
+            this.Close();
+        }
+
+        private void cCatch_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cCatch.Checked == true) { Setting.catchpoke = 1; } else { Setting.catchpoke = 0; }
         }
     }
 }

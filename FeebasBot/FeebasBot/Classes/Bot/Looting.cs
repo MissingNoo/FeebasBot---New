@@ -55,7 +55,7 @@ namespace FeebasBot.Classes.Bot
             Thread.Sleep(100);
             win32.LeftClickLocked(Setting.OrderX, Setting.OrderY);
             Thread.Sleep(100);
-            win32.LeftClickLocked(Setting.SQMX - 16, Setting.SQMY - position * 2);
+            win32.LeftClickLocked(Setting.SQMX, Setting.SQMY - position * 2);
         }
     }
 }

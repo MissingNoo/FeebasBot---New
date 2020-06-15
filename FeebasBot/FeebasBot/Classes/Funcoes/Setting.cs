@@ -85,6 +85,11 @@ namespace FeebasBot.Classes
         public static int m9 { get; set; }
         public static int m10 { get; set; }
         #endregion
+        #region Chat
+        public static int ChatEsquerdaX { get; set; }
+        public static int ChatDireitaX { get; set; }
+        public static int ChatY { get; set; }
+        #endregion
         #region Funções
         public static int Pescar { get; set; }
         public static int PescarSemParar { get; set; }
@@ -110,16 +115,11 @@ namespace FeebasBot.Classes
         #region Captura de Pokes
         public static int pokeballX { get; set; }
         public static int pokeballY { get; set; }
-        public static int ball1X { get; set; }
-        public static int ball1Y { get; set; }
-        public static int ball2X { get; set; }
-        public static int ball2Y { get; set; }
-        public static int ball3X { get; set; }
-        public static int ball3Y { get; set; }
-        public static int useBall1 { get; set; }
-        public static int useBall2 { get; set; }
-        public static int useBall3 { get; set; }
+        public static int SQMBX { get; set; }
+        public static int SQMBY { get; set; }
+
         #endregion
+
         
 
 
@@ -168,15 +168,8 @@ namespace FeebasBot.Classes
                 "catchpoke : " + Setting.catchpoke,
                 "pokeballX : " + Setting.pokeballX,
                 "pokeballY : " + Setting.pokeballY,
-                "ball1X : " + Setting.ball1X,
-                "ball1Y : " + Setting.ball1Y,
-                "ball2X : " + Setting.ball2X,
-                "ball2Y : " + Setting.ball2Y,
-                "ball3X : " + Setting.ball3X,
-                "ball3Y : " + Setting.ball3Y,
-                "useBall1 : " + Setting.useBall1,
-                "useBall2 : " + Setting.useBall2,
-                "useBall3 : " + Setting.useBall3,
+                "SQMBX: " + Setting.SQMBX,
+                "SQMBY: " + Setting.SQMBY,
                 "triestotal : " + Setting.triestotal,
                 "attacktime : " + Setting.attacktime,
                 "diff : " + Setting.diff,
@@ -200,6 +193,9 @@ namespace FeebasBot.Classes
                 "Poke5Y : " + Setting.Poke1Y,
                 "Poke6X : " + Setting.Poke2X,
                 "Poke6Y : " + Setting.Poke2Y,
+                "ChatEsquerdaX : " + Setting.ChatEsquerdaX,
+                "ChatDireitaX: " + Setting.ChatDireitaX,
+                "ChatY: " + Setting.ChatY,
             };
 
             // Write the string array to a new file named "WriteLines.txt".
