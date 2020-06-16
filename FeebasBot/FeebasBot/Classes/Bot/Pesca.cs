@@ -16,7 +16,7 @@ namespace FeebasBot.Classes.Bot
             int dir = 8;
             #region random
             Random rnd = new Random();
-            if (Setting.random == 1)
+            if (Setting.randomfish == 1)
             {
                 dir = rnd.Next(0, 8);
             }

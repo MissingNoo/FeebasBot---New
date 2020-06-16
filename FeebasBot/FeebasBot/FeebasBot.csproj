@@ -215,6 +215,7 @@
     <None Include="Resources\cursor.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\Discord-Logo-Color" />
     <None Include="Resources\vara.png" />
   </ItemGroup>
   <ItemGroup>

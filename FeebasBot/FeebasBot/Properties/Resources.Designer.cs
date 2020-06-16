@@ -111,6 +111,16 @@ namespace FeebasBot.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Discord_Logo_Color {
+            get {
+                object obj = ResourceManager.GetObject("Discord-Logo-Color", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap padrao {
             get {
                 object obj = ResourceManager.GetObject("padrao", resourceCulture);

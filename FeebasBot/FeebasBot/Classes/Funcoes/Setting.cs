@@ -11,6 +11,7 @@ namespace FeebasBot.Classes
         public static bool clicklock { get; set; }
         public static bool Kill { get; set; }
         public static bool Running { get; set; }
+        public static int randomfish { get; set; }
         public static bool PlayerOnScreen { get; set; }
         public static int offset { get; set; }
         public static int tries { get; set; }
@@ -89,6 +90,7 @@ namespace FeebasBot.Classes
         public static int ChatEsquerdaX { get; set; }
         public static int ChatDireitaX { get; set; }
         public static int ChatY { get; set; }
+        public static int ChatStop { get; set; }
         #endregion
         #region Funções
         public static int Pescar { get; set; }
@@ -164,7 +166,7 @@ namespace FeebasBot.Classes
                 "PortraitY : " + Setting.PortraitY,
                 "portraitdead : " + Setting.portraitdead,
                 "caverun : " + Setting.caverun,
-                "random : " + Setting.random,
+                "randomfish : " + Setting.randomfish,
                 "catchpoke : " + Setting.catchpoke,
                 "pokeballX : " + Setting.pokeballX,
                 "pokeballY : " + Setting.pokeballY,
@@ -185,17 +187,18 @@ namespace FeebasBot.Classes
                 "Poke1Y : " + Setting.Poke1Y,
                 "Poke2X : " + Setting.Poke2X,
                 "Poke2Y : " + Setting.Poke2Y,
-                "Poke3X : " + Setting.Poke1X,
-                "Poke3Y : " + Setting.Poke1Y,
-                "Poke4X : " + Setting.Poke2X,
-                "Poke4Y : " + Setting.Poke2Y,
-                "Poke5X : " + Setting.Poke1X,
-                "Poke5Y : " + Setting.Poke1Y,
-                "Poke6X : " + Setting.Poke2X,
-                "Poke6Y : " + Setting.Poke2Y,
+                "Poke3X : " + Setting.Poke3X,
+                "Poke3Y : " + Setting.Poke3Y,
+                "Poke4X : " + Setting.Poke4X,
+                "Poke4Y : " + Setting.Poke4Y,
+                "Poke5X : " + Setting.Poke5X,
+                "Poke5Y : " + Setting.Poke5Y,
+                "Poke6X : " + Setting.Poke6X,
+                "Poke6Y : " + Setting.Poke6Y,
                 "ChatEsquerdaX : " + Setting.ChatEsquerdaX,
-                "ChatDireitaX: " + Setting.ChatDireitaX,
-                "ChatY: " + Setting.ChatY,
+                "ChatDireitaX : " + Setting.ChatDireitaX,
+                "ChatY : " + Setting.ChatY,
+                "ChatStop : " + Setting.ChatStop, 
             };
 
             // Write the string array to a new file named "WriteLines.txt".

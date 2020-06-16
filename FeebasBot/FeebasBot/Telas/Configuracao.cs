@@ -21,11 +21,10 @@ namespace FeebasBot.Telas
         {
             InitializeComponent();
         }
-        int testx, testy;
 
         private void basescreen_Load(object sender, EventArgs e)
         {
-            if (Setting.attacktime < 100) Setting.attacktime = 100;
+            if (Setting.attacktime < 50) Setting.attacktime = 50;
             if (Setting.PodeUsarLooting == 0) cLoot.Enabled = false;
             numericUpDown1.Value = Setting.attacktime;
             gName.Text = Setting.GameName;
@@ -36,13 +35,14 @@ namespace FeebasBot.Telas
             if (Setting.PodeUsarCaveBot == 1) { lCave.ForeColor = Color.Green; } else { lCave.ForeColor = Color.Red; }
             label10.Text = Setting.login;
             if (Setting.Pescar == 1) { cPescar.Checked = true; cNoStop.Enabled = true; cRandom.Enabled = true; } else { cNoStop.Enabled = false; cRandom.Enabled = false; }
-            if (Setting.random == 1) { cRandom.Checked = true; } else { cRandom.Checked = false; }
+            if (Setting.randomfish == 1) { cRandom.Checked = true; }
             if (Setting.PescarSemParar == 1) cNoStop.Checked = true;
             if (Setting.Atacar == 1) { cAtacar.Checked = true; cSemTarget.Enabled = true; } else { cSemTarget.Enabled = false; }
             if (Setting.AtacarSemTarget == 1) cSemTarget.Checked = true;
             if (Setting.Lootear == 1) cLoot.Checked = true;
             if (Setting.TrocarDePokemon == 1) cTrocaDePoke.Checked = true;
             if (Setting.catchpoke == 1) cCatch.Checked = true;
+            if (Setting.ChatStop == 1) cChatStop.Checked = true;
             if (Setting.m1 == 1) cm1.Checked = true;
             if (Setting.m2 == 1) cm2.Checked = true;
             if (Setting.m3 == 1) cm3.Checked = true;
@@ -637,7 +637,7 @@ namespace FeebasBot.Telas
 
         private void cRandom_CheckedChanged(object sender, EventArgs e)
         {
-            if (cRandom.Enabled == true) { Setting.random = 1; } else { Setting.random = 0; }
+            if (cRandom.Checked == true) { Setting.randomfish = 1; } else { Setting.randomfish = 0; }
         }
 
         private void cTrocaDePoke_CheckedChanged(object sender, EventArgs e)
@@ -797,9 +797,19 @@ namespace FeebasBot.Telas
             this.Close();
         }
 
+        private void button5_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://discord.gg/dD54Rn9");
+        }
+
         private void cCatch_CheckedChanged(object sender, EventArgs e)
         {
             if (cCatch.Checked == true) { Setting.catchpoke = 1; } else { Setting.catchpoke = 0; }
+        }
+
+        private void cChatStop_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cChatStop.Checked == true) { Setting.ChatStop = 1; } else { Setting.ChatStop = 0; }
         }
     }
 }

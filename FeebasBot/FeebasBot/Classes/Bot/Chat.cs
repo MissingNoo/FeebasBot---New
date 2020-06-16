@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FeebasBot.Classes.Funcoes;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -51,10 +52,13 @@ namespace FeebasBot.Classes.Bot
                 string color = getpixel.GrabPixel(i, Setting.ChatY);
                 if (color == "5592575" && show == false)
                 {
-                    Setting.Kill = true;
-                    MessageBox.Show("Mensagem no Chat!");                       
+                    FormsV.playSound("chat.wav");
                     show = true;
                 }
+            }
+            if (show == true && Setting.ChatStop == 1)
+            {
+                Setting.Kill = true;
             }
         }
     }
