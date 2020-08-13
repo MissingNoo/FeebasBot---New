@@ -6,6 +6,11 @@ namespace FeebasBot.Classes
 {
     public sealed class Setting
     {
+        public static int newversion { get; set; }
+        public static int IsTargeting { get; set; }
+        public static int PausarNoTarget { get; set; }
+        public static int CaveChat { get; set; }
+        public static int CavePlayer { get; set; }
         public static bool UseHk { get; set; }
         public static bool click { get; set; }
         public static bool clicklock { get; set; }
@@ -198,7 +203,11 @@ namespace FeebasBot.Classes
                 "ChatEsquerdaX : " + Setting.ChatEsquerdaX,
                 "ChatDireitaX : " + Setting.ChatDireitaX,
                 "ChatY : " + Setting.ChatY,
-                "ChatStop : " + Setting.ChatStop, 
+                "ChatStop : " + Setting.ChatStop,
+                "CaveChat : " + Setting.CaveChat,
+                "CavePlayer : " + Setting.CavePlayer,
+                "PausarNoTarget : " + Setting.PausarNoTarget,
+                "newversion : " + Setting.newversion,
             };
 
             // Write the string array to a new file named "WriteLines.txt".

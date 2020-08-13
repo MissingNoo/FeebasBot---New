@@ -38,10 +38,12 @@ namespace FeebasBot.Classes.Funcoes
                 string px = getpixel.GrabPixel(Setting.TargetX, a);
                 if (px == "8947967" || px == "255")
                 {
+                    Setting.IsTargeting = 1;
                     found = true;
                     break;
                 }
             }
+            if (found == false) { Setting.IsTargeting = 0; }
             return found;
         }
         public static void Targetar()

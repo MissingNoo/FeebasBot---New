@@ -91,8 +91,10 @@ namespace FeebasBot
             //SendMessage(handle, WM_LBUTTONDOWN, 0x00000001, CreateLParam(x, y));
             //SendMessage(handle, WM_LBUTTONUP, 0x00000000, CreateLParam(x, y));
         }
+        public static IntPtr handle = FindWindow(null, Setting.GameName);
         public static void LeftClick(int x, int y)
         {
+            SetForegroundWindow(handle);
             if (Setting.click == false && Setting.clicklock == false)
             {
                 Setting.click = true;
@@ -108,6 +110,7 @@ namespace FeebasBot
         }
         public static void LeftClickLocked(int x, int y)
         {
+            SetForegroundWindow(handle);
             Setting.click = true;
             IntPtr hWindow = win32.FindWindow(null, Setting.GameName);
             int border_thickness = GetSystemMetrics(SystemMetric.SM_CYCAPTION);

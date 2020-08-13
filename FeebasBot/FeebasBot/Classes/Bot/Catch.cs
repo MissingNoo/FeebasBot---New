@@ -13,7 +13,7 @@ namespace FeebasBot.Classes.Bot
         static int position = (Setting.SQMBY - Setting.PlayerY);
         public static void JogarBall()
         {
-            if (Setting.PodeCapturar == 1 && Setting.catchpoke == 1)
+            if (Setting.PodeCapturar == 1 && Setting.catchpoke == 1 && Setting.LoggedIn == true)
             {
                 Setting.clicklock = true;
                 win32.LeftClickLocked(0, 0);

@@ -42,6 +42,7 @@
             this.Run = new System.Windows.Forms.Timer(this.components);
             this.Open = new System.Windows.Forms.Timer(this.components);
             this.Troca = new System.Windows.Forms.Timer(this.components);
+            this.stop = new System.Windows.Forms.Timer(this.components);
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -96,7 +97,6 @@
             // 
             // bStart
             // 
-            this.bStart.Dock = System.Windows.Forms.DockStyle.Top;
             this.bStart.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.bStart.Location = new System.Drawing.Point(0, 39);
             this.bStart.Name = "bStart";
@@ -108,9 +108,8 @@
             // 
             // bStop
             // 
-            this.bStop.Dock = System.Windows.Forms.DockStyle.Top;
             this.bStop.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bStop.Location = new System.Drawing.Point(0, 62);
+            this.bStop.Location = new System.Drawing.Point(0, 61);
             this.bStop.Name = "bStop";
             this.bStop.Size = new System.Drawing.Size(189, 23);
             this.bStop.TabIndex = 2;
@@ -127,24 +126,22 @@
             // 
             // bConfig
             // 
-            this.bConfig.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.bConfig.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bConfig.Location = new System.Drawing.Point(0, 108);
+            this.bConfig.Location = new System.Drawing.Point(0, 105);
             this.bConfig.Name = "bConfig";
             this.bConfig.Size = new System.Drawing.Size(189, 23);
-            this.bConfig.TabIndex = 3;
+            this.bConfig.TabIndex = 4;
             this.bConfig.Text = "Configurações";
             this.bConfig.UseVisualStyleBackColor = true;
             this.bConfig.Click += new System.EventHandler(this.bConfig_Click);
             // 
             // bCave
             // 
-            this.bCave.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.bCave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bCave.Location = new System.Drawing.Point(0, 85);
+            this.bCave.Location = new System.Drawing.Point(0, 83);
             this.bCave.Name = "bCave";
             this.bCave.Size = new System.Drawing.Size(189, 23);
-            this.bCave.TabIndex = 4;
+            this.bCave.TabIndex = 3;
             this.bCave.Text = "Cavebot";
             this.bCave.UseVisualStyleBackColor = true;
             this.bCave.Click += new System.EventHandler(this.bCave_Click);
@@ -165,11 +162,16 @@
             this.Troca.Interval = 250;
             this.Troca.Tick += new System.EventHandler(this.Troca_Tick);
             // 
+            // stop
+            // 
+            this.stop.Enabled = true;
+            this.stop.Tick += new System.EventHandler(this.stop_Tick);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(189, 131);
+            this.ClientSize = new System.Drawing.Size(189, 128);
             this.Controls.Add(this.bCave);
             this.Controls.Add(this.bConfig);
             this.Controls.Add(this.bStop);
@@ -178,7 +180,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "FeebasBot";
+            this.Text = "Chrome";
             this.TopMost = true;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -203,6 +205,7 @@
         private System.Windows.Forms.Timer Run;
         private System.Windows.Forms.Timer Open;
         private System.Windows.Forms.Timer Troca;
+        private System.Windows.Forms.Timer stop;
     }
 }
 

@@ -18,9 +18,11 @@ namespace FeebasBot.Classes.Bot
             int xn = x;
             int yn = y;
             int maxdiff = 100;
+            int maxxn = xn - maxdiff;
             while (true)
             {
                 xn--;
+                if (xn == maxxn) { MessageBox.Show("erro"); break; }
                 color = getpixel.GrabPixel(xn, yn);
                 if (xn == xn - maxdiff) { MessageBox.Show("Cor não encontrada!"); break; }
                 if (color == "5003617") break;
@@ -33,9 +35,11 @@ namespace FeebasBot.Classes.Bot
             xn = x;
             yn = y;
             maxdiff = 100;
+            maxxn = xn + maxdiff;
             while (true)
             {
                 xn++;
+                if (xn == maxxn) { MessageBox.Show("erro"); break; }
                 color = getpixel.GrabPixel(xn, yn);
                 if (xn == xn + maxdiff) { MessageBox.Show("Cor não encontrada!"); break; }
                 if (color == "5003617") break;
@@ -56,9 +60,13 @@ namespace FeebasBot.Classes.Bot
                     show = true;
                 }
             }
-            if (show == true && Setting.ChatStop == 1)
+            if (show == true)
             {
-                Setting.Kill = true;
+                if (Setting.ChatStop == 1 || Setting.CaveChat == 1)
+                {
+                    Setting.PlayerOnScreen = true;
+                    Setting.Kill = true;
+                }
             }
         }
     }

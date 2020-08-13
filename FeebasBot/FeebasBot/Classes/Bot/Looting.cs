@@ -16,7 +16,7 @@ namespace FeebasBot.Classes.Bot
         static int position = (Setting.SQMY - Setting.PlayerY);
         public static void AbrirCorpos()
         {
-            if (Setting.PodeUsarLooting == 1 && Setting.Lootear == 1)
+            if (Setting.PodeUsarLooting == 1 && Setting.Lootear == 1 && Setting.LoggedIn == true)
             {
                 lootcolor = getpixel.GrabPixel(Setting.SlotX, Setting.SlotY);                
                 Setting.clicklock = true;

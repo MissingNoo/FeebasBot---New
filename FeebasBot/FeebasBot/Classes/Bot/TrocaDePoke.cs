@@ -12,7 +12,7 @@ namespace FeebasBot.Classes.Bot
     {
         public static void VerificarMorto()
         {
-            if (Setting.PodeUsarTrocaDePokemon == 1)
+            if (Setting.PodeUsarTrocaDePokemon == 1 && Setting.LoggedIn == true)
             {
                 string px = getpixel.GrabPixel(Setting.PortraitX, Setting.PortraitY);
                 if (px == Setting.portraitdead) TrocarDePokemon();

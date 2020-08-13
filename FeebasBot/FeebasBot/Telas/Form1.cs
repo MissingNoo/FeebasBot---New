@@ -3,11 +3,12 @@ using FeebasBot.Classes.Bot;
 using FeebasBot.Classes.Funcoes;
 using FeebasBot.Forms;
 using FeebasBot.Telas;
-using MySql.Data.MySqlClient;
+//using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -33,22 +34,29 @@ namespace FeebasBot
             Setting.Kill = true;
             Run.Stop();
             IntPtr otpHandle = win32.FindWindow(null, Setting.GameName);
-            win32.SetWindowText(otpHandle, "otPokemon");
+            //win32.SetWindowText(otpHandle, "otPokemon");
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            if (Setting.newversion != 1) { MessageBox.Show("Nessa nova versão, coloque o nome do char na config igual mostra na janela do jogo", "Aviso!", MessageBoxButtons.OK, MessageBoxIcon.Information); Setting.newversion = 1; }
             Setting.click = false;
             Setting.clicklock = false;
-            if (Setting.login != "") Login();
-            Setting.GameName = "otPokemon";
-            IntPtr bothandle = win32.FindWindow(null, Setting.GameName + "Bot");
-            if (bothandle != IntPtr.Zero) { MessageBox.Show("Renomeie o Client Anteior antes de abrir mais um bot!"); Application.Exit(); }
-            this.Text = Setting.GameName + "Bot";
+            //if (Setting.login != "") Login();
+            Setting.GameName = "otPokemon | Nome";
+            //IntPtr bothandle = win32.FindWindow(null, Setting.GameName + "Bot");
+            //if (bothandle != IntPtr.Zero) { MessageBox.Show("Renomeie o Client Anteior antes de abrir mais um bot!"); Application.Exit(); }
+            this.Text = Setting.GameName + "Chrome";
             IntPtr otphandle = win32.FindWindow(null, Setting.GameName);
-            if (otphandle == IntPtr.Zero) { MessageBox.Show("otPokemon não está aberto!"); Application.Exit(); }
+            //if (otphandle == IntPtr.Zero) { MessageBox.Show("otPokemon não está aberto!"); Application.Exit(); }
             ghk = new KeyHandler(Keys.Insert, this);
             ghk.Register();
+            Setting.LoggedIn = true;
+            Setting.PodeUsarCaveBot = 1;
+            Setting.PodeUsarLooting = 1;
+            Setting.PodeUsarTrocaDePokemon = 1;
+            Setting.PodeCapturar = 1;
+            Setting.login = "Free Premium";
         }
         private KeyHandler ghk;
         private void HandleHotkey()
@@ -114,58 +122,74 @@ namespace FeebasBot
             }
         }
         #region Login
-        String firstMacAddress = NetworkInterface
-            .GetAllNetworkInterfaces()
-            .Where(nic => nic.OperationalStatus == OperationalStatus.Up && nic.NetworkInterfaceType != NetworkInterfaceType.Loopback)
-            .Select(nic => nic.GetPhysicalAddress().ToString())
-            .FirstOrDefault();
-        MySqlConnection con;
-        MySqlCommand cmd;
-        MySqlDataReader dr;
-        private void Login()
-        {
-            int puc=0,pul=0,put=0,pc=0;
-            string mac = "";
-            string my = "Server=sql10.freemysqlhosting.net;Database=sql10336993;user=sql10336993;Pwd=8JsRa57ub3;SslMode=none";
-            con = new MySqlConnection(my);
-            cmd = new MySqlCommand();
-            con.Open();
-            cmd.Connection = con;
-            cmd.CommandText = "SELECT * FROM users where User='" + Setting.login + "'";
-            dr = cmd.ExecuteReader();
-            if (dr.Read())
-            {
-                mac = Convert.ToString(dr.GetValue(2));
-                puc = Convert.ToInt32(dr.GetValue(1));
-                pul = Convert.ToInt32(dr.GetValue(3));
-                put = Convert.ToInt32(dr.GetValue(7));
-                pc = Convert.ToInt32(dr.GetValue(6));
-            }
-            con.Close();
-            //MessageBox.Show(Convert.ToString(mac) + "\n" + Convert.ToString(firstMacAddress));
-            if (mac == firstMacAddress)
-            {
-                Setting.LoggedIn = true;
-                Setting.PodeUsarCaveBot = puc;
-                Setting.PodeUsarLooting = pul;
-                Setting.PodeUsarTrocaDePokemon = put;
-                Setting.PodeCapturar = pc;
-                //MessageBox.Show("Logado com sucesso!");
-            }
-            else if (mac == "0")
-            {
-                con.Open();
-                cmd.CommandText = "UPDATE users SET MAC='" + firstMacAddress + "' WHERE User='" + Setting.login + "'";
-                cmd.ExecuteNonQuery();
-                Setting.LoggedIn = true;
-                //MessageBox.Show("Logado com sucesso!");
-            }
-            else if (mac != firstMacAddress && mac != "0" && mac != "")
-            {
-                MessageBox.Show("Computador diferente do cadastrado no sistema\nComunicar o Desenvolvedor!", "Informação", MessageBoxButtons.OK);
-            }
-            con.Close();
-        }
+        //String firstMacAddress = NetworkInterface
+        //    .GetAllNetworkInterfaces()
+        //    .Where(nic => nic.OperationalStatus == OperationalStatus.Up && nic.NetworkInterfaceType != NetworkInterfaceType.Loopback)
+        //    .Select(nic => nic.GetPhysicalAddress().ToString())
+        //    .FirstOrDefault();
+        //MySqlConnection con;
+        //MySqlCommand cmd;
+        //MySqlDataReader dr;
+        //private void Login()
+        //{
+        //    int server = 0;
+        //    int puc=0,pul=0,put=0,pc=0;
+        //    string mac = "";
+        //    string my = "Server=sql10.freemysqlhosting.net;Database=;user=;Pwd=;SslMode=none";
+        //    con = new MySqlConnection(my);
+        //    cmd = new MySqlCommand();
+        //    try
+        //    {
+        //        con.Open();
+        //        server = 1;
+        //    }
+        //    catch (Exception)
+        //    {
+        //        Setting.LoggedIn = true;
+        //        Setting.PodeUsarCaveBot = 1;
+        //        Setting.PodeUsarLooting = 1;
+        //        Setting.PodeUsarTrocaDePokemon = 1;
+        //        Setting.PodeCapturar = 1;
+        //    }
+        //    if (server == 1)
+        //    {
+        //        cmd.Connection = con;
+        //        cmd.CommandText = "SELECT * FROM users where User='" + Setting.login + "'";
+        //        dr = cmd.ExecuteReader();
+        //        if (dr.Read())
+        //        {
+        //            mac = Convert.ToString(dr.GetValue(2));
+        //            puc = Convert.ToInt32(dr.GetValue(1));
+        //            pul = Convert.ToInt32(dr.GetValue(3));
+        //            put = Convert.ToInt32(dr.GetValue(7));
+        //            pc = Convert.ToInt32(dr.GetValue(6));
+        //        }
+        //        con.Close();
+        //        //MessageBox.Show(Convert.ToString(mac) + "\n" + Convert.ToString(firstMacAddress));
+        //        if (mac == firstMacAddress)
+        //        {
+        //            Setting.LoggedIn = true;
+        //            Setting.PodeUsarCaveBot = puc;
+        //            Setting.PodeUsarLooting = pul;
+        //            Setting.PodeUsarTrocaDePokemon = put;
+        //            Setting.PodeCapturar = pc;
+        //            //MessageBox.Show("Logado com sucesso!");
+        //        }
+        //        else if (mac == "0")
+        //        {
+        //            con.Open();
+        //            cmd.CommandText = "UPDATE users SET MAC='" + firstMacAddress + "' WHERE User='" + Setting.login + "'";
+        //            cmd.ExecuteNonQuery();
+        //            Setting.LoggedIn = true;
+        //            //MessageBox.Show("Logado com sucesso!");
+        //        }
+        //        else if (mac != firstMacAddress && mac != "0" && mac != "")
+        //        {
+        //            MessageBox.Show("Computador diferente do cadastrado no sistema\nComunicar o Desenvolvedor!", "Informação", MessageBoxButtons.OK);
+        //        }
+        //        con.Close();
+        //    }
+        //}
         #endregion
         #endregion
         #endregion
@@ -243,22 +267,71 @@ namespace FeebasBot
                 Setting.Running = false; 
                 thread.Start();
             }
-            if (Setting.PlayerOnScreen == true) { Run.Stop(); bStart.BackColor = Color.Red; FormsV.playSound("alarm.wav"); }
+            if (Setting.PlayerOnScreen == true) 
+            { 
+                Setting.Kill = true; 
+                Run.Stop();
+                Troca.Stop();
+                bStart.BackColor = Color.Red;
+                FormsV.playSound("alarm.wav");
+                if (Setting.CaveChat == 1 || Setting.CavePlayer == 1)
+                {
+                    if (Setting.LoggedIn = true && Setting.PodeUsarCaveBot == 1)
+                    {
+                        CaveBot caveBot = new CaveBot();
+                        caveBot.Show();
+                        caveBot.button2_Click(sender, e);
+                        caveBot.Hide();
+                    }
+                }
+            }
             //Thread.Sleep(200);
         }
-
         private void Open_Tick(object sender, EventArgs e)
         {
-            this.Text = Setting.GameName + "Bot";
-            if (Setting.GameName != "otPokemon") { label1.Text = Setting.GameName; }
-            nIcon.Text = "Clique duas vezes para abrir a janela do bot!\nChar: " + Setting.GameName;
+            this.Text = Setting.GameName + "Chrome";
+            label1.Text = Setting.GameName;
+            //if (Setting.GameName != "otPokemon") { label1.Text = Setting.GameName; }
+            string a = "Clique duas vezes para abrir a janela do bot!\nChar: " + Setting.GameName;
+            if (a.Length < 64)
+            {
+                nIcon.Text = "Clique duas vezes para abrir a janela do bot!\nChar: " + Setting.GameName;
+            }
         }
         int f = 0;
         private void Troca_Tick(object sender, EventArgs e)
         {
             Thread thread = new Thread(TrocaDePoke.VerificarMorto);
             if (Setting.verificandopoke == false) { thread.Start();Setting.verificandopoke = true; if (f == 0) Thread.Sleep(3000); f = 1; }
-            if (Setting.PlayerOnScreen == true) { Run.Stop(); bStart.BackColor = Color.Red; FormsV.playSound("alarm.wav"); }
+            if (Setting.PlayerOnScreen == true) 
+            { 
+                Setting.Kill = true; 
+                Troca.Stop(); 
+                Run.Stop(); 
+                bStart.BackColor = Color.Red; 
+                FormsV.playSound("alarm.wav");
+                if (Setting.CaveChat == 1 || Setting.CavePlayer == 1)
+                {
+                    if (Setting.LoggedIn = true && Setting.PodeUsarCaveBot == 1)
+                    {
+                        CaveBot caveBot = new CaveBot();
+                        caveBot.Show();
+                        caveBot.button2_Click(sender, e);
+                        caveBot.Hide();
+                    }
+                }
+            }
+        }
+
+        private void stop_Tick(object sender, EventArgs e)
+        {
+            if (MousePosition.X == 0 || MousePosition.Y == 0)
+            {
+                Setting.Kill = true;
+                Troca.Stop();
+                Run.Stop();
+                bStart.BackColor = Color.Red;
+            }
         }
     }
 }

@@ -36,15 +36,16 @@
             this.tabFunction = new System.Windows.Forms.TabPage();
             this.button5 = new System.Windows.Forms.Button();
             this.panel13 = new System.Windows.Forms.Panel();
+            this.cChatStop = new System.Windows.Forms.CheckBox();
             this.label29 = new System.Windows.Forms.Label();
             this.button4 = new System.Windows.Forms.Button();
             this.label27 = new System.Windows.Forms.Label();
             this.button3 = new System.Windows.Forms.Button();
-            this.label11 = new System.Windows.Forms.Label();
-            this.gName = new System.Windows.Forms.TextBox();
             this.panel6 = new System.Windows.Forms.Panel();
             this.cCatch = new System.Windows.Forms.CheckBox();
             this.cTrocaDePoke = new System.Windows.Forms.CheckBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.gName = new System.Windows.Forms.TextBox();
             this.cRandom = new System.Windows.Forms.CheckBox();
             this.cSemTarget = new System.Windows.Forms.CheckBox();
             this.cLoot = new System.Windows.Forms.CheckBox();
@@ -91,6 +92,7 @@
             this.button9 = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.tabLooting = new System.Windows.Forms.TabPage();
+            this.label33 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.panel10 = new System.Windows.Forms.Panel();
             this.bSave = new System.Windows.Forms.Button();
@@ -158,8 +160,9 @@
             this.ManualConfig = new System.Windows.Forms.Timer(this.components);
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.DrawPositions = new System.Windows.Forms.Timer(this.components);
-            this.cChatStop = new System.Windows.Forms.CheckBox();
-            this.label33 = new System.Windows.Forms.Label();
+            this.cCavePlayer = new System.Windows.Forms.CheckBox();
+            this.label34 = new System.Windows.Forms.Label();
+            this.cCaveChat = new System.Windows.Forms.CheckBox();
             this.panel1.SuspendLayout();
             this.bPlayer2.SuspendLayout();
             this.tabFunction.SuspendLayout();
@@ -273,10 +276,21 @@
             this.panel13.Controls.Add(this.button4);
             this.panel13.Controls.Add(this.label27);
             this.panel13.Controls.Add(this.button3);
-            this.panel13.Location = new System.Drawing.Point(7, 126);
+            this.panel13.Location = new System.Drawing.Point(7, 150);
             this.panel13.Name = "panel13";
             this.panel13.Size = new System.Drawing.Size(312, 83);
             this.panel13.TabIndex = 4;
+            // 
+            // cChatStop
+            // 
+            this.cChatStop.AutoSize = true;
+            this.cChatStop.Location = new System.Drawing.Point(6, 61);
+            this.cChatStop.Name = "cChatStop";
+            this.cChatStop.Size = new System.Drawing.Size(159, 17);
+            this.cChatStop.TabIndex = 7;
+            this.cChatStop.Text = "Parar ao receber mensagem";
+            this.cChatStop.UseVisualStyleBackColor = true;
+            this.cChatStop.CheckedChanged += new System.EventHandler(this.cChatStop_CheckedChanged);
             // 
             // label29
             // 
@@ -321,27 +335,12 @@
             this.button3.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btnVara_MouseDown);
             this.button3.MouseUp += new System.Windows.Forms.MouseEventHandler(this.button3_MouseUp);
             // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.label11.Location = new System.Drawing.Point(142, 75);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(82, 13);
-            this.label11.TabIndex = 2;
-            this.label11.Text = "Nome do Client:";
-            // 
-            // gName
-            // 
-            this.gName.Location = new System.Drawing.Point(145, 91);
-            this.gName.Name = "gName";
-            this.gName.Size = new System.Drawing.Size(100, 20);
-            this.gName.TabIndex = 1;
-            this.gName.TextChanged += new System.EventHandler(this.gName_TextChanged);
-            // 
             // panel6
             // 
             this.panel6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel6.Controls.Add(this.cCaveChat);
+            this.panel6.Controls.Add(this.label34);
+            this.panel6.Controls.Add(this.cCavePlayer);
             this.panel6.Controls.Add(this.cCatch);
             this.panel6.Controls.Add(this.cTrocaDePoke);
             this.panel6.Controls.Add(this.label11);
@@ -354,7 +353,7 @@
             this.panel6.Controls.Add(this.cPescar);
             this.panel6.Location = new System.Drawing.Point(7, 7);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(250, 116);
+            this.panel6.Size = new System.Drawing.Size(250, 140);
             this.panel6.TabIndex = 0;
             // 
             // cCatch
@@ -378,6 +377,24 @@
             this.cTrocaDePoke.Text = "Trocar de Pokemon";
             this.cTrocaDePoke.UseVisualStyleBackColor = true;
             this.cTrocaDePoke.CheckedChanged += new System.EventHandler(this.cTrocaDePoke_CheckedChanged);
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.label11.Location = new System.Drawing.Point(142, 75);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(82, 13);
+            this.label11.TabIndex = 2;
+            this.label11.Text = "Nome do Client:";
+            // 
+            // gName
+            // 
+            this.gName.Location = new System.Drawing.Point(145, 91);
+            this.gName.Name = "gName";
+            this.gName.Size = new System.Drawing.Size(100, 20);
+            this.gName.TabIndex = 1;
+            this.gName.TextChanged += new System.EventHandler(this.gName_TextChanged);
             // 
             // cRandom
             // 
@@ -920,6 +937,15 @@
             this.tabLooting.TabIndex = 4;
             this.tabLooting.Text = "Looting";
             this.tabLooting.UseVisualStyleBackColor = true;
+            // 
+            // label33
+            // 
+            this.label33.AutoSize = true;
+            this.label33.Location = new System.Drawing.Point(173, 140);
+            this.label33.Name = "label33";
+            this.label33.Size = new System.Drawing.Size(162, 39);
+            this.label33.TabIndex = 19;
+            this.label33.Text = "Para usar o Looting é necessario\r\nestar com o jogo no modo\r\ncom bordas";
             // 
             // button1
             // 
@@ -1625,7 +1651,7 @@
             this.bLogin.TabIndex = 1;
             this.bLogin.Text = "Login";
             this.bLogin.UseVisualStyleBackColor = true;
-            this.bLogin.Click += new System.EventHandler(this.bLogin_Click);
+            //this.bLogin.Click += new System.EventHandler(this.bLogin_Click);
             // 
             // label8
             // 
@@ -1653,25 +1679,36 @@
             this.DrawPositions.Interval = 1;
             this.DrawPositions.Tick += new System.EventHandler(this.DrawPositions_Tick);
             // 
-            // cChatStop
+            // cCavePlayer
             // 
-            this.cChatStop.AutoSize = true;
-            this.cChatStop.Location = new System.Drawing.Point(6, 61);
-            this.cChatStop.Name = "cChatStop";
-            this.cChatStop.Size = new System.Drawing.Size(159, 17);
-            this.cChatStop.TabIndex = 7;
-            this.cChatStop.Text = "Parar ao receber mensagem";
-            this.cChatStop.UseVisualStyleBackColor = true;
-            this.cChatStop.CheckedChanged += new System.EventHandler(this.cChatStop_CheckedChanged);
+            this.cCavePlayer.AutoSize = true;
+            this.cCavePlayer.Location = new System.Drawing.Point(54, 117);
+            this.cCavePlayer.Name = "cCavePlayer";
+            this.cCavePlayer.Size = new System.Drawing.Size(55, 17);
+            this.cCavePlayer.TabIndex = 8;
+            this.cCavePlayer.Text = "Player";
+            this.cCavePlayer.UseVisualStyleBackColor = true;
+            this.cCavePlayer.CheckedChanged += new System.EventHandler(this.cCavePlayer_CheckedChanged);
             // 
-            // label33
+            // label34
             // 
-            this.label33.AutoSize = true;
-            this.label33.Location = new System.Drawing.Point(173, 140);
-            this.label33.Name = "label33";
-            this.label33.Size = new System.Drawing.Size(162, 39);
-            this.label33.TabIndex = 19;
-            this.label33.Text = "Para usar o Looting é necessario\r\nestar com o jogo no modo\r\ncom bordas";
+            this.label34.AutoSize = true;
+            this.label34.Location = new System.Drawing.Point(4, 117);
+            this.label34.Name = "label34";
+            this.label34.Size = new System.Drawing.Size(50, 13);
+            this.label34.TabIndex = 9;
+            this.label34.Text = "Cavebot:";
+            // 
+            // cCaveChat
+            // 
+            this.cCaveChat.AutoSize = true;
+            this.cCaveChat.Location = new System.Drawing.Point(115, 117);
+            this.cCaveChat.Name = "cCaveChat";
+            this.cCaveChat.Size = new System.Drawing.Size(48, 17);
+            this.cCaveChat.TabIndex = 10;
+            this.cCaveChat.Text = "Chat";
+            this.cCaveChat.UseVisualStyleBackColor = true;
+            this.cCaveChat.CheckedChanged += new System.EventHandler(this.cCaveChat_CheckedChanged);
             // 
             // Configuracao
             // 
@@ -1864,5 +1901,8 @@
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.CheckBox cChatStop;
         private System.Windows.Forms.Label label33;
+        private System.Windows.Forms.CheckBox cCaveChat;
+        private System.Windows.Forms.Label label34;
+        private System.Windows.Forms.CheckBox cCavePlayer;
     }
 }

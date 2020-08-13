@@ -10,9 +10,10 @@ using System.Windows.Forms;
 using System.Data.SQLite;
 using csharp_Sqlite;
 using System.Threading;
-using MySqlX.XDevAPI.Relational;
+//using MySqlX.XDevAPI.Relational;
 using FeebasBot.Classes;
 using System.Runtime.InteropServices;
+using FeebasBot.Classes.Funcoes;
 
 namespace FeebasBot.Forms
 {
@@ -51,6 +52,15 @@ namespace FeebasBot.Forms
             int time = 300;
             view.Rows[iexec].Selected = true;
             string now = view.Rows[iexec].Cells[1].Value.ToString();
+            if (Setting.PausarNoTarget == 1)
+            {
+                Verificacoes.Targetando();
+                while (Setting.IsTargeting == 1)
+                {
+                    Thread.Sleep(0);
+                    Verificacoes.Targetando();
+                }
+            }
             switch (now)
             {
                 default:
@@ -164,6 +174,7 @@ namespace FeebasBot.Forms
                     break;
                 case "SAY":
                     String s = Convert.ToString(view.Rows[iexec].Cells[4].Value);
+                    SendKeys.SendWait("{Enter}");
                     var chars = s.ToCharArray();
                     for (int ctr = 0; ctr < chars.Length; ctr++)                        //Console.WriteLine("   {0}: {1}", ctr, chars[ctr]);
                     {
@@ -189,18 +200,19 @@ namespace FeebasBot.Forms
                     if (pokechange == 2)
                     { Thread.Sleep(500); win32.LeftClick(Setting.Poke2X, Setting.Poke2Y); }
                     if (pokechange == 3)
-                    { Thread.Sleep(500); win32.LeftClick(Setting.Poke2X, Setting.Poke2Y + diff); }
+                    { Thread.Sleep(500); win32.LeftClick(Setting.Poke3X, Setting.Poke3Y); }
                     if (pokechange == 4)
-                    { Thread.Sleep(500); win32.LeftClick(Setting.Poke2X, Setting.Poke2Y + diff + diff); }
+                    { Thread.Sleep(500); win32.LeftClick(Setting.Poke4X, Setting.Poke4Y); }
                     if (pokechange == 5)
-                    { Thread.Sleep(500); win32.LeftClick(Setting.Poke2X, Setting.Poke2Y + diff + diff + diff); }
+                    { Thread.Sleep(500); win32.LeftClick(Setting.Poke5X, Setting.Poke5Y); }
                     if (pokechange == 6)
-                    { Thread.Sleep(500); win32.LeftClick(Setting.Poke2X, Setting.Poke2Y + diff + diff + diff + diff); }
+                    { Thread.Sleep(500); win32.LeftClick(Setting.Poke6X, Setting.Poke6Y); }
                     Thread.Sleep(3000);
                     break;
                 case "Teleport":
                     string tp = "!teleport Saffron";
                     var charstp = tp.ToCharArray();
+                    SendKeys.SendWait("{Enter}");
                     for (int ctr = 0; ctr < charstp.Length; ctr++)                        //Console.WriteLine("   {0}: {1}", ctr, chars[ctr]);
                     {
                         win32.SetForegroundWindow(otpHandle);
@@ -232,6 +244,15 @@ namespace FeebasBot.Forms
                     }
                     break;
             }
+            if (Setting.PausarNoTarget == 1)
+            {
+                Verificacoes.Targetando();
+                while (Setting.IsTargeting == 1)
+                {
+                    Thread.Sleep(0);
+                    Verificacoes.Targetando();
+                }
+            }            
             if (iexec < view.RowCount)
             { iexec++; }
             if (iexec >= view.RowCount)
@@ -252,6 +273,7 @@ namespace FeebasBot.Forms
 
         private void CaveBot_Load(object sender, EventArgs e)
         {
+            if (Setting.PausarNoTarget == 1) { cPauseTarget.Checked = true; }
             otpHandle = win32.FindWindow(null, Setting.GameName);
             view.DataSource = DalHelper.GetClientes();
             if (view.RowCount > 0)
@@ -280,7 +302,7 @@ namespace FeebasBot.Forms
         private void btnDelete_Click(object sender, EventArgs e)
         {
             int current = 0;
-            int anterior = 0;
+            //int anterior = 0;
             if (view.CurrentRow != null)
             {
                 current = view.Rows[view.CurrentRow.Index].Index;
@@ -587,6 +609,11 @@ namespace FeebasBot.Forms
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void cPauseTarget_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cPauseTarget.Checked == true) { Setting.PausarNoTarget = 1; } else { Setting.PausarNoTarget = 0; }
         }
     }
 }

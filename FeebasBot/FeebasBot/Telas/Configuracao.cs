@@ -1,6 +1,6 @@
 ﻿using FeebasBot.Classes;
 using FeebasBot.Classes.Bot;
-using MySql.Data.MySqlClient;
+//using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -43,6 +43,9 @@ namespace FeebasBot.Telas
             if (Setting.TrocarDePokemon == 1) cTrocaDePoke.Checked = true;
             if (Setting.catchpoke == 1) cCatch.Checked = true;
             if (Setting.ChatStop == 1) cChatStop.Checked = true;
+            if (Setting.PodeUsarCaveBot == 1) { cCaveChat.Enabled = true;cCavePlayer.Enabled = true; } else { cCaveChat.Enabled = false; cCavePlayer.Enabled = false; }
+            if (Setting.CaveChat == 1) cCaveChat.Checked = true;
+            if (Setting.CavePlayer == 1) cCavePlayer.Checked = true;
             if (Setting.m1 == 1) cm1.Checked = true;
             if (Setting.m2 == 1) cm2.Checked = true;
             if (Setting.m3 == 1) cm3.Checked = true;
@@ -400,60 +403,80 @@ namespace FeebasBot.Telas
 
         }
         #region Login
-        String firstMacAddress = NetworkInterface
-            .GetAllNetworkInterfaces()
-            .Where(nic => nic.OperationalStatus == OperationalStatus.Up && nic.NetworkInterfaceType != NetworkInterfaceType.Loopback)
-            .Select(nic => nic.GetPhysicalAddress().ToString())
-            .FirstOrDefault();
-        MySqlConnection con;
-        MySqlCommand cmd;
-        MySqlDataReader dr;
-        private void bLogin_Click(object sender, EventArgs e)
-        {
-            int puc = 0, pul = 0, put = 0, pc = 0;
-            Setting.login = txtLogin.Text;
-            string mac = "";
-            string my = "Server=sql10.freemysqlhosting.net;Database=sql10336993;user=sql10336993;Pwd=8JsRa57ub3;SslMode=none";
-            con = new MySqlConnection(my);
-            cmd = new MySqlCommand();
-            con.Open();
-            cmd.Connection = con;
-            cmd.CommandText = "SELECT * FROM users where User='" + Setting.login + "'";
-            dr = cmd.ExecuteReader();
-            if (dr.Read())
-            {
-                mac = Convert.ToString(dr.GetValue(2));
-                puc = Convert.ToInt32(dr.GetValue(1));
-                pul = Convert.ToInt32(dr.GetValue(3));
-                put = Convert.ToInt32(dr.GetValue(7));
-                pc = Convert.ToInt32(dr.GetValue(6));
-            }
-            con.Close();
-            //MessageBox.Show(Convert.ToString(mac) + "\n" + Convert.ToString(firstMacAddress));
-            if (mac == firstMacAddress)
-            {
-                Setting.LoggedIn = true;
-                Setting.PodeUsarCaveBot = puc;
-                Setting.PodeUsarLooting = pul;
-                Setting.PodeUsarTrocaDePokemon = put;
-                Setting.PodeCapturar = pc;
-                MessageBox.Show("Logado com sucesso!");
-            }
-            else if (mac == "0")
-            {
-                con.Open();
-                cmd.CommandText = "UPDATE users SET MAC='" + firstMacAddress + "' WHERE User='" + Setting.login + "'";
-                cmd.ExecuteNonQuery();
-                Setting.LoggedIn = true;
-                MessageBox.Show("Logado com sucesso!");
-            }
-            else if (mac != firstMacAddress && mac != "0" && mac != "")
-            {
-                MessageBox.Show("Computador diferente do cadastrado no sistema\nComunicar o Desenvolvedor!", "Informação", MessageBoxButtons.OK);
-            }
-            con.Close();
-            this.Close();
-        }
+        //String firstMacAddress = NetworkInterface
+        //    .GetAllNetworkInterfaces()
+        //    .Where(nic => nic.OperationalStatus == OperationalStatus.Up && nic.NetworkInterfaceType != NetworkInterfaceType.Loopback)
+        //    .Select(nic => nic.GetPhysicalAddress().ToString())
+        //    .FirstOrDefault();
+        //MySqlConnection con;
+        //MySqlCommand cmd;
+        //MySqlDataReader dr;
+        //private void bLogin_Click(object sender, EventArgs e)
+        //{
+        //    int server = 0;
+        //    int puc = 0, pul = 0, put = 0, pc = 0;
+        //    Setting.login = txtLogin.Text;
+        //    string mac = "";
+        //    string my = "Server=sql10.freemysqlhosting.net;Database=;user=;Pwd=;SslMode=none";
+        //    con = new MySqlConnection(my);
+        //    cmd = new MySqlCommand();
+        //    try
+        //    {
+        //        con.Open();
+        //        server = 1;
+        //    }
+        //    catch (Exception)
+        //    {
+        //        Setting.LoggedIn = true;
+        //        Setting.PodeUsarCaveBot = 1;
+        //        Setting.PodeUsarLooting = 1;
+        //        Setting.PodeUsarTrocaDePokemon = 1;
+        //        Setting.PodeCapturar = 1;
+        //        MessageBox.Show("Todas as funções liberadas!");
+        //        Setting.login = "Free Premium";
+        //        this.Close();
+        //    }
+        //    if (server == 1)
+        //    {
+        //        cmd.Connection = con;
+        //        cmd.CommandText = "SELECT * FROM users where User='" + Setting.login + "'";
+        //        dr = cmd.ExecuteReader();
+        //        if (dr.Read())
+        //        {
+        //            mac = Convert.ToString(dr.GetValue(2));
+        //            puc = Convert.ToInt32(dr.GetValue(1));
+        //            pul = Convert.ToInt32(dr.GetValue(3));
+        //            put = Convert.ToInt32(dr.GetValue(7));
+        //            pc = Convert.ToInt32(dr.GetValue(6));
+        //        }
+        //        else { Setting.login = null; MessageBox.Show("Login Incorreto!"); }
+        //        con.Close();
+        //        //MessageBox.Show(Convert.ToString(mac) + "\n" + Convert.ToString(firstMacAddress));
+        //        if (mac == firstMacAddress)
+        //        {
+        //            Setting.LoggedIn = true;
+        //            Setting.PodeUsarCaveBot = puc;
+        //            Setting.PodeUsarLooting = pul;
+        //            Setting.PodeUsarTrocaDePokemon = put;
+        //            Setting.PodeCapturar = pc;
+        //            MessageBox.Show("Logado com sucesso!");
+        //        }
+        //        else if (mac == "0")
+        //        {
+        //            con.Open();
+        //            cmd.CommandText = "UPDATE users SET MAC='" + firstMacAddress + "' WHERE User='" + Setting.login + "'";
+        //            cmd.ExecuteNonQuery();
+        //            Setting.LoggedIn = true;
+        //            MessageBox.Show("Logado com sucesso!");
+        //        }
+        //        else if (mac != firstMacAddress && mac != "0" && mac != "")
+        //        {
+        //            MessageBox.Show("Computador diferente do cadastrado no sistema\nComunicar o Desenvolvedor!", "Informação", MessageBoxButtons.OK);
+        //        }
+        //        con.Close();
+        //        this.Close();
+        //    }
+        //}
         #endregion
 
         private void tabLogin_Click(object sender, EventArgs e)
@@ -642,7 +665,7 @@ namespace FeebasBot.Telas
 
         private void cTrocaDePoke_CheckedChanged(object sender, EventArgs e)
         {
-            if (cTrocaDePoke.Enabled == true) { Setting.TrocarDePokemon = 1; } else { Setting.TrocarDePokemon = 0; }
+            if (cTrocaDePoke.Checked == true) { Setting.TrocarDePokemon = 1; } else { Setting.TrocarDePokemon = 0; }
         }
 
         private void bPoke1_MouseUp(object sender, MouseEventArgs e)
@@ -810,6 +833,16 @@ namespace FeebasBot.Telas
         private void cChatStop_CheckedChanged(object sender, EventArgs e)
         {
             if (cChatStop.Checked == true) { Setting.ChatStop = 1; } else { Setting.ChatStop = 0; }
+        }
+
+        private void cCavePlayer_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cCavePlayer.Checked == true) { Setting.CavePlayer = 1; } else { Setting.CavePlayer = 0; }
+        }
+
+        private void cCaveChat_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cCaveChat.Checked == true) { Setting.CaveChat = 1; } else { Setting.CaveChat = 0; }
         }
     }
 }

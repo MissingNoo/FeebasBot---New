@@ -61,14 +61,15 @@ namespace FeebasBot.Classes.Bot
             }
 #endregion
             int time = 0;
+            Chat.CheckChat();
             Thread.Sleep(500);
             bool pescou = false;
             if (Setting.PlayerOnScreen == true || Setting.Kill) { Thread.CurrentThread.Abort(); }
             Setting.clicklock = true;
             win32.LeftClickLocked(0, 0);
-            win32.LeftClickLocked(Setting.RodX, Setting.RodY);//clicar na vara
+            win32.LeftClickOld(win32.FindWindow(null, Setting.GameName), Setting.RodX, Setting.RodY);//clicar na vara
             Thread.Sleep(200);
-            win32.LeftClickLocked(wx, wy);//clicar na agua
+            win32.LeftClickOld(win32.FindWindow(null, Setting.GameName), wx, wy);//clicar na agua
             Thread.Sleep(200);
             win32.LeftClickLocked(0, 0);
             Setting.clicklock = false;
@@ -89,6 +90,7 @@ namespace FeebasBot.Classes.Bot
                     colornow = "0";
                 }
             }
+            Chat.CheckChat();
             if (Setting.PlayerOnScreen == true || Setting.Kill) { Thread.CurrentThread.Abort(); }
             win32.LeftClick(Setting.FishX, Setting.FishY);
             win32.MoveMouse(0, 0);
