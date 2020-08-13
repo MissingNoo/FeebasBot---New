@@ -42,6 +42,9 @@
             this.label27 = new System.Windows.Forms.Label();
             this.button3 = new System.Windows.Forms.Button();
             this.panel6 = new System.Windows.Forms.Panel();
+            this.cCaveChat = new System.Windows.Forms.CheckBox();
+            this.label34 = new System.Windows.Forms.Label();
+            this.cCavePlayer = new System.Windows.Forms.CheckBox();
             this.cCatch = new System.Windows.Forms.CheckBox();
             this.cTrocaDePoke = new System.Windows.Forms.CheckBox();
             this.label11 = new System.Windows.Forms.Label();
@@ -160,9 +163,6 @@
             this.ManualConfig = new System.Windows.Forms.Timer(this.components);
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.DrawPositions = new System.Windows.Forms.Timer(this.components);
-            this.cCavePlayer = new System.Windows.Forms.CheckBox();
-            this.label34 = new System.Windows.Forms.Label();
-            this.cCaveChat = new System.Windows.Forms.CheckBox();
             this.panel1.SuspendLayout();
             this.bPlayer2.SuspendLayout();
             this.tabFunction.SuspendLayout();
@@ -355,6 +355,37 @@
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(250, 140);
             this.panel6.TabIndex = 0;
+            // 
+            // cCaveChat
+            // 
+            this.cCaveChat.AutoSize = true;
+            this.cCaveChat.Location = new System.Drawing.Point(115, 117);
+            this.cCaveChat.Name = "cCaveChat";
+            this.cCaveChat.Size = new System.Drawing.Size(48, 17);
+            this.cCaveChat.TabIndex = 10;
+            this.cCaveChat.Text = "Chat";
+            this.cCaveChat.UseVisualStyleBackColor = true;
+            this.cCaveChat.CheckedChanged += new System.EventHandler(this.cCaveChat_CheckedChanged);
+            // 
+            // label34
+            // 
+            this.label34.AutoSize = true;
+            this.label34.Location = new System.Drawing.Point(4, 117);
+            this.label34.Name = "label34";
+            this.label34.Size = new System.Drawing.Size(50, 13);
+            this.label34.TabIndex = 9;
+            this.label34.Text = "Cavebot:";
+            // 
+            // cCavePlayer
+            // 
+            this.cCavePlayer.AutoSize = true;
+            this.cCavePlayer.Location = new System.Drawing.Point(54, 117);
+            this.cCavePlayer.Name = "cCavePlayer";
+            this.cCavePlayer.Size = new System.Drawing.Size(55, 17);
+            this.cCavePlayer.TabIndex = 8;
+            this.cCavePlayer.Text = "Player";
+            this.cCavePlayer.UseVisualStyleBackColor = true;
+            this.cCavePlayer.CheckedChanged += new System.EventHandler(this.cCavePlayer_CheckedChanged);
             // 
             // cCatch
             // 
@@ -1651,7 +1682,6 @@
             this.bLogin.TabIndex = 1;
             this.bLogin.Text = "Login";
             this.bLogin.UseVisualStyleBackColor = true;
-            //this.bLogin.Click += new System.EventHandler(this.bLogin_Click);
             // 
             // label8
             // 
@@ -1678,37 +1708,6 @@
             // 
             this.DrawPositions.Interval = 1;
             this.DrawPositions.Tick += new System.EventHandler(this.DrawPositions_Tick);
-            // 
-            // cCavePlayer
-            // 
-            this.cCavePlayer.AutoSize = true;
-            this.cCavePlayer.Location = new System.Drawing.Point(54, 117);
-            this.cCavePlayer.Name = "cCavePlayer";
-            this.cCavePlayer.Size = new System.Drawing.Size(55, 17);
-            this.cCavePlayer.TabIndex = 8;
-            this.cCavePlayer.Text = "Player";
-            this.cCavePlayer.UseVisualStyleBackColor = true;
-            this.cCavePlayer.CheckedChanged += new System.EventHandler(this.cCavePlayer_CheckedChanged);
-            // 
-            // label34
-            // 
-            this.label34.AutoSize = true;
-            this.label34.Location = new System.Drawing.Point(4, 117);
-            this.label34.Name = "label34";
-            this.label34.Size = new System.Drawing.Size(50, 13);
-            this.label34.TabIndex = 9;
-            this.label34.Text = "Cavebot:";
-            // 
-            // cCaveChat
-            // 
-            this.cCaveChat.AutoSize = true;
-            this.cCaveChat.Location = new System.Drawing.Point(115, 117);
-            this.cCaveChat.Name = "cCaveChat";
-            this.cCaveChat.Size = new System.Drawing.Size(48, 17);
-            this.cCaveChat.TabIndex = 10;
-            this.cCaveChat.Text = "Chat";
-            this.cCaveChat.UseVisualStyleBackColor = true;
-            this.cCaveChat.CheckedChanged += new System.EventHandler(this.cCaveChat_CheckedChanged);
             // 
             // Configuracao
             // 

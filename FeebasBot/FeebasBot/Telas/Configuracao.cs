@@ -488,7 +488,7 @@ namespace FeebasBot.Telas
         {
             if (gName.Text != "")
             {
-                IntPtr otpHandle = win32.FindWindow(null, Setting.GameName);
+                IntPtr otpHandle = win32.FindWindow("otPokemon", null);
                 Setting.GameName = gName.Text;
                 win32.SetWindowText(otpHandle, Setting.GameName);
             }

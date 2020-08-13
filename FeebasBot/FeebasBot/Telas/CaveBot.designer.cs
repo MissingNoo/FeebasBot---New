@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CaveBot));
             this.view = new System.Windows.Forms.DataGridView();
             this.btnDelete = new System.Windows.Forms.Button();
@@ -56,6 +57,10 @@
             this.btnMvDown = new System.Windows.Forms.Button();
             this.btnMvUp = new System.Windows.Forms.Button();
             this.cPauseTarget = new System.Windows.Forms.CheckBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.wButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.view)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -129,6 +134,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.wButton);
             this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.btnLogout);
             this.panel1.Controls.Add(this.btnTP);
@@ -357,11 +363,47 @@
             this.cPauseTarget.UseVisualStyleBackColor = true;
             this.cPauseTarget.CheckedChanged += new System.EventHandler(this.cPauseTarget_CheckedChanged);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(294, 332);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(35, 13);
+            this.label1.TabIndex = 23;
+            this.label1.Text = "label1";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(294, 348);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(35, 13);
+            this.label2.TabIndex = 24;
+            this.label2.Text = "label2";
+            // 
+            // timer1
+            // 
+            this.timer1.Enabled = true;
+            this.timer1.Interval = 200;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // wButton
+            // 
+            this.wButton.Location = new System.Drawing.Point(3, 89);
+            this.wButton.Name = "wButton";
+            this.wButton.Size = new System.Drawing.Size(75, 23);
+            this.wButton.TabIndex = 24;
+            this.wButton.Text = "Waypoint";
+            this.wButton.UseVisualStyleBackColor = true;
+            this.wButton.Click += new System.EventHandler(this.wButton_Click);
+            // 
             // CaveBot
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(626, 370);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.cPauseTarget);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnMvDown);
@@ -369,7 +411,7 @@
             this.Controls.Add(this.view);
             this.Controls.Add(this.btnMvUp);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Name = "CaveChrome";
+            this.Name = "CaveBot";
             this.Text = "CaveChrome";
             this.TopMost = true;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.CaveBot_FormClosing);
@@ -412,5 +454,9 @@
         private System.Windows.Forms.Button btnTP;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.CheckBox cPauseTarget;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Button wButton;
     }
 }

@@ -47,7 +47,7 @@ namespace FeebasBot
         }
         public static string GrabPixel(int x, int y)
         {
-            IntPtr Handle = win32.FindWindow(null, Setting.GameName);
+            IntPtr Handle = win32.FindWindow("otPokemon", null);
             return Convert.ToString(getpixel.GetColorAt(Handle, x, y)); 
         }
     }

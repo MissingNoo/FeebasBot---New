@@ -14,6 +14,7 @@ using System.Threading;
 using FeebasBot.Classes;
 using System.Runtime.InteropServices;
 using FeebasBot.Classes.Funcoes;
+using FeebasBot.Classes.Bot;
 
 namespace FeebasBot.Forms
 {
@@ -38,18 +39,19 @@ namespace FeebasBot.Forms
         bool trueif = false;
         int iexec = 0;
         int idatual = 0;
-        IntPtr otpHandle = win32.FindWindow(null, Setting.GameName);
+        IntPtr otpHandle = win32.FindWindow("otPokemon", null);
         public CaveBot()
         {
             InitializeComponent();
         }
+
         public void exec()
         {
             if (stop == true) 
             {
                 Thread.CurrentThread.Abort();
             }
-            int time = 300;
+            int time = 500;
             view.Rows[iexec].Selected = true;
             string now = view.Rows[iexec].Cells[1].Value.ToString();
             if (Setting.PausarNoTarget == 1)
@@ -64,6 +66,71 @@ namespace FeebasBot.Forms
             switch (now)
             {
                 default:
+                    break;
+                case "Waypoint":
+                    int ix = Convert.ToInt32(view.Rows[iexec].Cells[2].Value);
+                    int iy = Convert.ToInt32(view.Rows[iexec].Cells[3].Value);
+                    int nx, ny, lx, ly;
+                    int max = 5;
+                    while (Setting.charx != ix | Setting.chary != iy)
+                    {
+                        if (Setting.charx < ix)
+                        {
+                            lx = Setting.charx;
+                            win32.SetForegroundWindow(otpHandle);
+                            //SendKeysA(Keys.Right);
+                            SendKeys.SendWait("{Right}");
+                            Thread.Sleep(time);
+                            nx = Setting.charx;
+                            if (lx == nx)
+                            {
+                                //if(Rdn.Radn() == 0) SendKeys.SendWait("{Up}");
+                                //else SendKeys.SendWait("{Down}");
+                            }
+                        }
+                        if (Setting.charx > ix)
+                        {
+                            lx = Setting.charx;
+                            win32.SetForegroundWindow(otpHandle);
+                            //SendKeysA(Keys.Right);
+                            SendKeys.SendWait("{Left}");
+                            Thread.Sleep(time);
+                            nx = Setting.charx;
+                            if (lx == nx)
+                            {
+                                //if (Rdn.Radn() == 0) SendKeys.SendWait("{Up}");
+                               // else SendKeys.SendWait("{Down}");
+                            }
+                        }
+                        if (Setting.chary > iy)
+                        {
+                            ly = Setting.charx;
+                            win32.SetForegroundWindow(otpHandle);
+                            //SendKeysA(Keys.Right);
+                            SendKeys.SendWait("{Up}");
+                            Thread.Sleep(time);
+                            ny = Setting.charx;
+                            if (ly == ny)
+                            {
+                               // if (Rdn.Radn() == 0) SendKeys.SendWait("{Up}");
+                               // else SendKeys.SendWait("{Down}");
+                            }
+                        }
+                        if (Setting.chary < iy)
+                        {
+                            ly = Setting.charx;
+                            win32.SetForegroundWindow(otpHandle);
+                            //SendKeysA(Keys.Right);
+                            SendKeys.SendWait("{Down}");
+                            Thread.Sleep(time);
+                            ny = Setting.charx;
+                            if (ly == ny)
+                            {
+                              //  if (Rdn.Radn() == 0) SendKeys.SendWait("{Left}");
+                            //    else SendKeys.SendWait("{Right}");
+                            }
+                        }
+                    }
                     break;
                 case "Left":
                     win32.SetForegroundWindow(otpHandle);
@@ -274,7 +341,7 @@ namespace FeebasBot.Forms
         private void CaveBot_Load(object sender, EventArgs e)
         {
             if (Setting.PausarNoTarget == 1) { cPauseTarget.Checked = true; }
-            otpHandle = win32.FindWindow(null, Setting.GameName);
+            otpHandle = win32.FindWindow("otPokemon", null);
             view.DataSource = DalHelper.GetClientes();
             if (view.RowCount > 0)
             {
@@ -359,7 +426,7 @@ namespace FeebasBot.Forms
         }
         public void button2_Click(object sender, EventArgs e)
         {
-            otpHandle = win32.FindWindow(null, Setting.GameName);
+            otpHandle = win32.FindWindow("otPokemon", null);
             z = 1;
             colorrod = GrabPixel(Setting.RodX, Setting.RodY);
             stop = false;
@@ -614,6 +681,20 @@ namespace FeebasBot.Forms
         private void cPauseTarget_CheckedChanged(object sender, EventArgs e)
         {
             if (cPauseTarget.Checked == true) { Setting.PausarNoTarget = 1; } else { Setting.PausarNoTarget = 0; }
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            Mem.Memory();
+            label1.Text = "X: " + Setting.charx;
+            label2.Text = "Y: " + Setting.chary;
+        }
+
+        private void wButton_Click(object sender, EventArgs e)
+        {
+            DalHelper.Add(idatual, "Waypoint", Setting.charx, Setting.chary, "");
+            idatual++;
+            update();
         }
     }
 }

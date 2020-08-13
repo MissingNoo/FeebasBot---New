@@ -6,6 +6,8 @@ namespace FeebasBot.Classes
 {
     public sealed class Setting
     {
+        public static int charx { get; set; }
+        public static int chary { get; set; }
         public static int newversion { get; set; }
         public static int IsTargeting { get; set; }
         public static int PausarNoTarget { get; set; }

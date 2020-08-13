@@ -13,6 +13,7 @@ namespace FeebasBot.Classes.Bot
     {
         public static bool Pescar()
         {
+            IntPtr handle = win32.FindWindow("otPokemon", null);
             int dir = 8;
             #region random
             Random rnd = new Random();
@@ -67,9 +68,15 @@ namespace FeebasBot.Classes.Bot
             if (Setting.PlayerOnScreen == true || Setting.Kill) { Thread.CurrentThread.Abort(); }
             Setting.clicklock = true;
             win32.LeftClickLocked(0, 0);
-            win32.LeftClickOld(win32.FindWindow(null, Setting.GameName), Setting.RodX, Setting.RodY);//clicar na vara
+            //IntPtr now = win32.GetForegroundWindow();
+            //MessageBox.Show(now.ToString());
+            win32.SetForegroundWindow(handle);
+            win32.LeftClickOld(win32.FindWindow("otPokemon", null), Setting.RodX, Setting.RodY);//clicar na vara            
+            //win32.LeftClick(Setting.RodX, Setting.RodY);
             Thread.Sleep(200);
-            win32.LeftClickOld(win32.FindWindow(null, Setting.GameName), wx, wy);//clicar na agua
+            win32.LeftClickOld(win32.FindWindow("otPokemon", null), wx, wy);//clicar na agua
+            //win32.LeftClick(wx, wy);
+            //win32.SetForegroundWindow(now);
             Thread.Sleep(200);
             win32.LeftClickLocked(0, 0);
             Setting.clicklock = false;

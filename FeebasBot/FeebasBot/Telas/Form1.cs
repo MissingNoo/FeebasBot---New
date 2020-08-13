@@ -33,21 +33,23 @@ namespace FeebasBot
             Setting.SaveSettings();
             Setting.Kill = true;
             Run.Stop();
-            IntPtr otpHandle = win32.FindWindow(null, Setting.GameName);
+            IntPtr otpHandle = win32.FindWindow("otPokemon", null);
             //win32.SetWindowText(otpHandle, "otPokemon");
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            if (Setting.newversion != 1) { MessageBox.Show("Nessa nova versão, coloque o nome do char na config igual mostra na janela do jogo", "Aviso!", MessageBoxButtons.OK, MessageBoxIcon.Information); Setting.newversion = 1; }
+            Mem.Memory();
+            IntPtr otpHandle = win32.FindWindow("otPokemon", null);
+            if (Setting.newversion != 2) { MessageBox.Show("Agora o bot pega sozinho o nome do jogo", "Aviso!", MessageBoxButtons.OK, MessageBoxIcon.Information); Setting.newversion = 2; }
             Setting.click = false;
             Setting.clicklock = false;
             //if (Setting.login != "") Login();
-            Setting.GameName = "otPokemon | Nome";
-            //IntPtr bothandle = win32.FindWindow(null, Setting.GameName + "Bot");
+            Setting.GameName = win32.GetActiveWindowTitle();
+            //IntPtr bothandle = win32.FindWindow("otPokemon", null + "Bot");
             //if (bothandle != IntPtr.Zero) { MessageBox.Show("Renomeie o Client Anteior antes de abrir mais um bot!"); Application.Exit(); }
             this.Text = Setting.GameName + "Chrome";
-            IntPtr otphandle = win32.FindWindow(null, Setting.GameName);
+            IntPtr otphandle = win32.FindWindow("otPokemon", null);
             //if (otphandle == IntPtr.Zero) { MessageBox.Show("otPokemon não está aberto!"); Application.Exit(); }
             ghk = new KeyHandler(Keys.Insert, this);
             ghk.Register();

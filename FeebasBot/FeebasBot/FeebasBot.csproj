@@ -111,6 +111,9 @@
     <Reference Include="Ubiety.Dns.Core, Version=2.2.1.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
       <HintPath>..\packages\MySql.Data.8.0.20\lib\net452\Ubiety.Dns.Core.dll</HintPath>
     </Reference>
+    <Reference Include="VAMemory">
+      <HintPath>.\VAMemory.dll</HintPath>
+    </Reference>
     <Reference Include="Zstandard.Net, Version=1.1.7.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
       <HintPath>..\packages\MySql.Data.8.0.20\lib\net452\Zstandard.Net.dll</HintPath>
     </Reference>
@@ -121,12 +124,14 @@
     <Compile Include="Classes\Bot\Catch.cs" />
     <Compile Include="Classes\Bot\Chat.cs" />
     <Compile Include="Classes\Bot\Looting.cs" />
+    <Compile Include="Classes\Bot\Mem.cs" />
     <Compile Include="Classes\Bot\Pesca.cs" />
     <Compile Include="Classes\Bot\TrocaDePoke.cs" />
     <Compile Include="Classes\Funcoes\DalHelper.cs" />
     <Compile Include="Classes\Funcoes\FormsV.cs" />
     <Compile Include="Classes\Funcoes\getpixel.cs" />
     <Compile Include="Classes\Funcoes\Hotkey.cs" />
+    <Compile Include="Classes\Funcoes\Rdn.cs" />
     <Compile Include="Classes\Funcoes\Setting.cs" />
     <Compile Include="Classes\Bot\Verificacoes.cs" />
     <Compile Include="Telas\CaveBot.cs">
