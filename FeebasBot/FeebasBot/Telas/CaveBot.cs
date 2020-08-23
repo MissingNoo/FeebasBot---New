@@ -51,9 +51,18 @@ namespace FeebasBot.Forms
             {
                 Thread.CurrentThread.Abort();
             }
-            int time = 500;
+            int time = 200;
             view.Rows[iexec].Selected = true;
             string now = view.Rows[iexec].Cells[1].Value.ToString();
+            if (Setting.PausarNoTarget == 1)
+            {
+                Verificacoes.Targetando();
+                while (Setting.IsTargeting == 1)
+                {
+                    Thread.Sleep(0);
+                    Verificacoes.Targetando();
+                }
+            }
             if (Setting.PausarNoTarget == 1)
             {
                 Verificacoes.Targetando();
@@ -74,6 +83,15 @@ namespace FeebasBot.Forms
                     int max = 5;
                     while (Setting.charx != ix | Setting.chary != iy)
                     {
+                        if (Setting.PausarNoTarget == 1)
+                        {
+                            Verificacoes.Targetando();
+                            while (Setting.IsTargeting == 1)
+                            {
+                                Thread.Sleep(0);
+                                Verificacoes.Targetando();
+                            }
+                        }
                         if (Setting.charx < ix)
                         {
                             lx = Setting.charx;
@@ -649,7 +667,7 @@ namespace FeebasBot.Forms
         }
         private void CaveBot_FormClosing(object sender, FormClosingEventArgs e)
         {
-            
+            stop = true;
         }
 
         private void btnTP_Click(object sender, EventArgs e)

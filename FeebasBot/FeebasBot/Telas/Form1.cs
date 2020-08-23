@@ -202,6 +202,9 @@ namespace FeebasBot
         #endregion
         private void bStart_Click(object sender, EventArgs e)
         {
+            Mem.Memory();
+            Setting.LastX = Setting.charx;
+            Setting.LastY = Setting.chary;
             if (Setting.TrocarDePokemon == 1) { Troca.Start(); }
             Setting.verificandopoke = false;
             Setting.Kill = false;
@@ -327,7 +330,7 @@ namespace FeebasBot
 
         private void stop_Tick(object sender, EventArgs e)
         {
-            if (MousePosition.X == 0 || MousePosition.Y == 0)
+            if (MousePosition.X == 0 && MousePosition.Y == 0)
             {
                 Setting.Kill = true;
                 Troca.Stop();

@@ -29,9 +29,18 @@ namespace FeebasBot.Classes.Bot
                 if (BaseAddress != IntPtr.Zero)
                 {
                     VAMemory memory = new VAMemory("otpdx_beta");
+                    //x-y
                     int finalAddress = memory.ReadInt32((IntPtr)BaseAddress + + 0x00384810);
                     Setting.chary = memory.ReadInt32((IntPtr)finalAddress + 0x84C);
                     Setting.charx = memory.ReadInt32((IntPtr)finalAddress + 0x848);
+                    ////pokehp
+                    //int PokeAddr = memory.ReadInt32((IntPtr)BaseAddress + +0x00384810);
+                    //Setting.chary = memory.ReadInt32((IntPtr)PokeAddr + 0x84C);
+                    //Setting.charx = memory.ReadInt32((IntPtr)PokeAddr + 0x848);
+                    ////charhp
+                    //int CharAddr= memory.ReadInt32((IntPtr)BaseAddress + +0x00384810);
+                    //Setting.chary = memory.ReadInt32((IntPtr)CharAddr + 0x84C);
+                    //Setting.charx = memory.ReadInt32((IntPtr)CharAddr + 0x848);
                 }
             }
         }

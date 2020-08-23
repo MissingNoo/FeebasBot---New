@@ -6,8 +6,12 @@ namespace FeebasBot.Classes
 {
     public sealed class Setting
     {
+        public static int PokeHP { get; set; }
+        public static int CharHP { get; set; }
         public static int charx { get; set; }
         public static int chary { get; set; }
+        public static int LastX { get; set; }
+        public static int LastY { get; set; }
         public static int newversion { get; set; }
         public static int IsTargeting { get; set; }
         public static int PausarNoTarget { get; set; }
