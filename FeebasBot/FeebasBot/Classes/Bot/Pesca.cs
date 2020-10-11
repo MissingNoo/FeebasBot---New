@@ -76,9 +76,10 @@ namespace FeebasBot.Classes.Bot
                 //MessageBox.Show(now.ToString());
                 win32.SetForegroundWindow(handle);
                 win32.LeftClickOld(win32.FindWindow("otPokemon", null), Setting.RodX, Setting.RodY);//clicar na vara            
-                //win32.LeftClick(Setting.RodX, Setting.RodY);
+                //win32.LeftClick(Setting.FishX, Setting.FishY);
                 Thread.Sleep(200);
                 win32.LeftClickOld(win32.FindWindow("otPokemon", null), wx, wy);//clicar na agua
+                //win32.LeftClick(wx, wy);
                 Mem.Memory();
                 Setting.LastX = Setting.charx;
                 Setting.LastY = Setting.chary;

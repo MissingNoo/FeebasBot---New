@@ -12,14 +12,14 @@ namespace FeebasBot.Classes.Bot
     {
         public static void Memory()
         {
-            Process[] processes = Process.GetProcessesByName("otpdx_beta");
+            Process[] processes = Process.GetProcessesByName("otpdx");
             if (processes.Length > 0)
             {
                 IntPtr BaseAddress = IntPtr.Zero;
                 Process MYProc = processes[0];
                 foreach (ProcessModule module in MYProc.Modules)
                 {
-                    if (module.ModuleName.Contains("otpdx_beta"))
+                    if (module.ModuleName.Contains("otpdx"))
                     {
                         BaseAddress = module.BaseAddress;
                         //MessageBox.Show(BaseAddres.ToString());
@@ -28,7 +28,7 @@ namespace FeebasBot.Classes.Bot
 
                 if (BaseAddress != IntPtr.Zero)
                 {
-                    VAMemory memory = new VAMemory("otpdx_beta");
+                    VAMemory memory = new VAMemory("otpdx");
                     //x-y
                     int finalAddress = memory.ReadInt32((IntPtr)BaseAddress + + 0x00384810);
                     Setting.chary = memory.ReadInt32((IntPtr)finalAddress + 0x84C);

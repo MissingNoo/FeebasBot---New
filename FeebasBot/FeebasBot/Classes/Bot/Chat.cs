@@ -22,7 +22,7 @@ namespace FeebasBot.Classes.Bot
             while (true)
             {
                 xn--;
-                if (xn == maxxn) { MessageBox.Show("erro"); break; }
+                if (xn == maxxn) { MessageBox.Show("erro, precisa estar com o 'Padrão' selecionado para configurar"); break; }
                 color = getpixel.GrabPixel(xn, yn);
                 if (xn == xn - maxdiff) { MessageBox.Show("Cor não encontrada!"); break; }
                 if (color == "5003617") break;

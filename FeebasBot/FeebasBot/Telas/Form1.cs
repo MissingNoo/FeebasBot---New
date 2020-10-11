@@ -336,6 +336,7 @@ namespace FeebasBot
                 Troca.Stop();
                 Run.Stop();
                 bStart.BackColor = Color.Red;
+                this.Show();
             }
         }
     }
