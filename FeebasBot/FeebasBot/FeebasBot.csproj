@@ -155,6 +155,10 @@
     <Compile Include="Classes\Funcoes\Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Classes\Funcoes\win32.cs" />
+    <Compile Include="Telas\Form2.cs" />
+    <Compile Include="Telas\Form2.Designer.cs">
+      <DependentUpon>Form2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Telas\Info.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -254,7 +254,7 @@
             // 
             // button5
             // 
-            this.button5.BackgroundImage = global::FeebasBot.Properties.Resources.Discord_Logo_Color;
+            this.button5.BackgroundImage = null;
             this.button5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.button5.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
             this.button5.FlatAppearance.BorderSize = 0;
@@ -323,10 +323,10 @@
             // 
             // button3
             // 
-            this.button3.BackgroundImage = global::FeebasBot.Properties.Resources.padrao;
+            this.button3.BackgroundImage = null;
             this.button3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Image = global::FeebasBot.Properties.Resources.cursor;
+            this.button3.Image = null;
             this.button3.Location = new System.Drawing.Point(3, 3);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(75, 25);
@@ -539,9 +539,9 @@
             // btnVara
             // 
             this.btnVara.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.btnVara.BackgroundImage = global::FeebasBot.Properties.Resources.vara;
+            this.btnVara.BackgroundImage = null;
             this.btnVara.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnVara.Image = global::FeebasBot.Properties.Resources.cursor;
+            this.btnVara.Image = null;
             this.btnVara.Location = new System.Drawing.Point(3, 3);
             this.btnVara.Name = "btnVara";
             this.btnVara.Size = new System.Drawing.Size(40, 40);
@@ -562,9 +562,9 @@
             // btnAgua
             // 
             this.btnAgua.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.btnAgua.BackgroundImage = global::FeebasBot.Properties.Resources.agua;
+            this.btnAgua.BackgroundImage = null;
             this.btnAgua.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAgua.Image = global::FeebasBot.Properties.Resources.cursor;
+            this.btnAgua.Image = null;
             this.btnAgua.Location = new System.Drawing.Point(3, 49);
             this.btnAgua.Name = "btnAgua";
             this.btnAgua.Size = new System.Drawing.Size(40, 40);
@@ -576,9 +576,9 @@
             // btnPeixe
             // 
             this.btnPeixe.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.btnPeixe.BackgroundImage = global::FeebasBot.Properties.Resources.peixe1;
+            this.btnPeixe.BackgroundImage = null;
             this.btnPeixe.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPeixe.Image = global::FeebasBot.Properties.Resources.cursor;
+            this.btnPeixe.Image = null;
             this.btnPeixe.Location = new System.Drawing.Point(3, 95);
             this.btnPeixe.Name = "btnPeixe";
             this.btnPeixe.Size = new System.Drawing.Size(40, 40);
@@ -937,7 +937,7 @@
             // 
             this.button9.BackColor = System.Drawing.SystemColors.ControlDark;
             this.button9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button9.Image = global::FeebasBot.Properties.Resources.cursor;
+            this.button9.Image = null;
             this.button9.Location = new System.Drawing.Point(3, 3);
             this.button9.Name = "button9";
             this.button9.Size = new System.Drawing.Size(40, 40);
@@ -1131,7 +1131,7 @@
             // 
             this.bCloseLoot.BackColor = System.Drawing.SystemColors.ControlDark;
             this.bCloseLoot.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bCloseLoot.Image = global::FeebasBot.Properties.Resources.cursor;
+            this.bCloseLoot.Image = null;
             this.bCloseLoot.Location = new System.Drawing.Point(3, 187);
             this.bCloseLoot.Name = "bCloseLoot";
             this.bCloseLoot.Size = new System.Drawing.Size(40, 40);
@@ -1144,7 +1144,7 @@
             // 
             this.bOrder.BackColor = System.Drawing.SystemColors.ControlDark;
             this.bOrder.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bOrder.Image = global::FeebasBot.Properties.Resources.cursor;
+            this.bOrder.Image = null;
             this.bOrder.Location = new System.Drawing.Point(3, 95);
             this.bOrder.Name = "bOrder";
             this.bOrder.Size = new System.Drawing.Size(40, 40);
@@ -1175,7 +1175,7 @@
             // 
             this.bSquare.BackColor = System.Drawing.SystemColors.ControlDark;
             this.bSquare.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bSquare.Image = global::FeebasBot.Properties.Resources.cursor;
+            this.bSquare.Image = null;
             this.bSquare.Location = new System.Drawing.Point(3, 49);
             this.bSquare.Name = "bSquare";
             this.bSquare.Size = new System.Drawing.Size(40, 40);
@@ -1197,7 +1197,7 @@
             // 
             this.bSlot.BackColor = System.Drawing.SystemColors.ControlDark;
             this.bSlot.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bSlot.Image = global::FeebasBot.Properties.Resources.cursor;
+            this.bSlot.Image = null;
             this.bSlot.Location = new System.Drawing.Point(3, 141);
             this.bSlot.Name = "bSlot";
             this.bSlot.Size = new System.Drawing.Size(40, 40);
@@ -1219,7 +1219,7 @@
             // 
             this.bPlayer.BackColor = System.Drawing.SystemColors.ControlDark;
             this.bPlayer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bPlayer.Image = global::FeebasBot.Properties.Resources.cursor;
+            this.bPlayer.Image = null;
             this.bPlayer.Location = new System.Drawing.Point(3, 3);
             this.bPlayer.Name = "bPlayer";
             this.bPlayer.Size = new System.Drawing.Size(40, 40);
@@ -1293,10 +1293,10 @@
             // bPortrait
             // 
             this.bPortrait.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.bPortrait.BackgroundImage = global::FeebasBot.Properties.Resources.por;
+            this.bPortrait.BackgroundImage = null;
             this.bPortrait.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.bPortrait.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bPortrait.Image = global::FeebasBot.Properties.Resources.cursor;
+            this.bPortrait.Image = null;
             this.bPortrait.Location = new System.Drawing.Point(3, 141);
             this.bPortrait.Name = "bPortrait";
             this.bPortrait.Size = new System.Drawing.Size(40, 40);
@@ -1318,7 +1318,7 @@
             // 
             this.bPoke6.BackColor = System.Drawing.SystemColors.ControlDark;
             this.bPoke6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bPoke6.Image = global::FeebasBot.Properties.Resources.cursor;
+            this.bPoke6.Image = null;
             this.bPoke6.Location = new System.Drawing.Point(156, 95);
             this.bPoke6.Name = "bPoke6";
             this.bPoke6.Size = new System.Drawing.Size(40, 40);
@@ -1340,7 +1340,7 @@
             // 
             this.bPoke4.BackColor = System.Drawing.SystemColors.ControlDark;
             this.bPoke4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bPoke4.Image = global::FeebasBot.Properties.Resources.cursor;
+            this.bPoke4.Image = null;
             this.bPoke4.Location = new System.Drawing.Point(156, 49);
             this.bPoke4.Name = "bPoke4";
             this.bPoke4.Size = new System.Drawing.Size(40, 40);
@@ -1362,7 +1362,7 @@
             // 
             this.bPoke2.BackColor = System.Drawing.SystemColors.ControlDark;
             this.bPoke2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bPoke2.Image = global::FeebasBot.Properties.Resources.cursor;
+            this.bPoke2.Image = null;
             this.bPoke2.Location = new System.Drawing.Point(156, 3);
             this.bPoke2.Name = "bPoke2";
             this.bPoke2.Size = new System.Drawing.Size(40, 40);
@@ -1384,7 +1384,7 @@
             // 
             this.bPoke5.BackColor = System.Drawing.SystemColors.ControlDark;
             this.bPoke5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bPoke5.Image = global::FeebasBot.Properties.Resources.cursor;
+            this.bPoke5.Image = null;
             this.bPoke5.Location = new System.Drawing.Point(3, 95);
             this.bPoke5.Name = "bPoke5";
             this.bPoke5.Size = new System.Drawing.Size(40, 40);
@@ -1406,7 +1406,7 @@
             // 
             this.bPoke3.BackColor = System.Drawing.SystemColors.ControlDark;
             this.bPoke3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bPoke3.Image = global::FeebasBot.Properties.Resources.cursor;
+            this.bPoke3.Image = null;
             this.bPoke3.Location = new System.Drawing.Point(3, 49);
             this.bPoke3.Name = "bPoke3";
             this.bPoke3.Size = new System.Drawing.Size(40, 40);
@@ -1420,7 +1420,7 @@
             this.bPoke1.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
             this.bPoke1.BackColor = System.Drawing.SystemColors.ControlDark;
             this.bPoke1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bPoke1.Image = global::FeebasBot.Properties.Resources.cursor;
+            this.bPoke1.Image = null;
             this.bPoke1.Location = new System.Drawing.Point(3, 3);
             this.bPoke1.Name = "bPoke1";
             this.bPoke1.Size = new System.Drawing.Size(40, 40);
@@ -1480,7 +1480,7 @@
             // 
             this.bOrder2.BackColor = System.Drawing.SystemColors.ControlDark;
             this.bOrder2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bOrder2.Image = global::FeebasBot.Properties.Resources.cursor;
+            this.bOrder2.Image = null;
             this.bOrder2.Location = new System.Drawing.Point(3, 95);
             this.bOrder2.Name = "bOrder2";
             this.bOrder2.Size = new System.Drawing.Size(40, 40);
@@ -1502,7 +1502,7 @@
             // 
             this.bSquare2.BackColor = System.Drawing.SystemColors.ControlDark;
             this.bSquare2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bSquare2.Image = global::FeebasBot.Properties.Resources.cursor;
+            this.bSquare2.Image = null;
             this.bSquare2.Location = new System.Drawing.Point(3, 49);
             this.bSquare2.Name = "bSquare2";
             this.bSquare2.Size = new System.Drawing.Size(40, 40);
@@ -1524,7 +1524,7 @@
             // 
             this.bSlotBall.BackColor = System.Drawing.SystemColors.ControlDark;
             this.bSlotBall.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bSlotBall.Image = global::FeebasBot.Properties.Resources.cursor;
+            this.bSlotBall.Image = null;
             this.bSlotBall.Location = new System.Drawing.Point(3, 141);
             this.bSlotBall.Name = "bSlotBall";
             this.bSlotBall.Size = new System.Drawing.Size(40, 40);
@@ -1546,7 +1546,7 @@
             // 
             this.button10.BackColor = System.Drawing.SystemColors.ControlDark;
             this.button10.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button10.Image = global::FeebasBot.Properties.Resources.cursor;
+            this.button10.Image = null;
             this.button10.Location = new System.Drawing.Point(3, 3);
             this.button10.Name = "button10";
             this.button10.Size = new System.Drawing.Size(40, 40);
